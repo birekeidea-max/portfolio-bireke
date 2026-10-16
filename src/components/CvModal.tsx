@@ -23,7 +23,7 @@ CURRICULUM VITAE - ${PROFILE_DATA.name}
 ${PROFILE_DATA.title}
 Université : ${EDUCATION_DATA.institution}
 Contact : ${PROFILE_DATA.phone} | Email : ${PROFILE_DATA.email} | Ville : ${PROFILE_DATA.city}
-GitHub : ${PROFILE_DATA.github} | LinkedIn : ${PROFILE_DATA.linkedin}
+GitHub : ${PROFILE_DATA.github} | LinkedIn : ${PROFILE_DATA.linkedin} | X : ${PROFILE_DATA.x}
 
 PROFIL PROFESSIONNEL :
 ${PROFILE_DATA.shortBio}
@@ -112,6 +112,13 @@ ${LANGUAGES_DATA.map(l => `- ${l.name} : ${l.level}`).join('\n')}
               <span>{PROFILE_DATA.phone}</span>
               <span>·</span>
               <span>{PROFILE_DATA.email}</span>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-[#8B4513] font-semibold pt-1">
+              <a href={PROFILE_DATA.github} target="_blank" rel="noreferrer" className="hover:underline">GitHub</a>
+              <span>·</span>
+              <a href={PROFILE_DATA.linkedin} target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a>
+              <span>·</span>
+              <a href={PROFILE_DATA.x} target="_blank" rel="noreferrer" className="hover:underline">X (Twitter)</a>
             </div>
           </div>
 

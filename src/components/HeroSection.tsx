@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, FileText, ArrowRight, Github, Mail, MapPin, GraduationCap, Upload, Trash2, Check } from 'lucide-react';
+import { MessageCircle, FileText, ArrowRight, Github, Linkedin, Twitter, Mail, MapPin, GraduationCap, Upload, Trash2, Check } from 'lucide-react';
 import { PROFILE_DATA } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
 
@@ -198,7 +198,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
         </div>
 
         {/* 5. COORDONNÉES RAPIDES */}
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-600 dark:text-gray-400 pt-1">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-gray-600 dark:text-gray-400 pt-1">
           <a
             href={PROFILE_DATA.github}
             target="_blank"
@@ -206,7 +206,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
             className="inline-flex items-center gap-1 hover:text-[#8B4513] transition-colors"
           >
             <Github className="w-3.5 h-3.5 text-[#8B4513]" />
-            <span>GitHub : github.com/bireke</span>
+            <span>GitHub : birekeidea-max</span>
+          </a>
+          <span className="text-gray-400">·</span>
+          <a
+            href={PROFILE_DATA.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 hover:text-[#8B4513] transition-colors"
+          >
+            <Linkedin className="w-3.5 h-3.5 text-[#8B4513]" />
+            <span>LinkedIn : Idea Bireke</span>
+          </a>
+          <span className="text-gray-400">·</span>
+          <a
+            href={PROFILE_DATA.x}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 hover:text-[#8B4513] transition-colors"
+          >
+            <Twitter className="w-3.5 h-3.5 text-[#8B4513]" />
+            <span>X : @IdeaB19613</span>
           </a>
           <span className="text-gray-400">·</span>
           <button
@@ -216,14 +236,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
             <MessageCircle className="w-3.5 h-3.5 text-[#8B4513]" />
             <span>WhatsApp : {PROFILE_DATA.phone}</span>
           </button>
-          <span className="text-gray-400">·</span>
-          <a
-            href={`mailto:${PROFILE_DATA.email}`}
-            className="inline-flex items-center gap-1 hover:text-[#8B4513] transition-colors"
-          >
-            <Mail className="w-3.5 h-3.5 text-[#8B4513]" />
-            <span>Email : {PROFILE_DATA.email}</span>
-          </a>
         </div>
 
       </div>

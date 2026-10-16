@@ -34,8 +34,9 @@ export const PROFILE_DATA = {
   city: 'Bukavu, Sud-Kivu, RD Congo',
   university: 'Université Catholique de Bukavu (UCB)',
   avatar: '', // Aucune fausse image d'IA : l'utilisateur insère la sienne !
-  github: 'https://github.com/bireke',
-  linkedin: 'https://linkedin.com/in/bireke-idea'
+  github: 'https://github.com/birekeidea-max',
+  linkedin: 'https://www.linkedin.com/in/idea-bireke-bashige-1084a833b?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+  x: 'https://x.com/IdeaB19613'
 };
 
 export const PROJECTS_DATA: ProjectItem[] = [

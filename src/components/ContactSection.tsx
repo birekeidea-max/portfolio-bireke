@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Mail, Phone, MapPin, Send, Github, Linkedin, Copy, Check, Edit2, ArrowUp } from 'lucide-react';
+import { MessageCircle, Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Copy, Check, Edit2, ArrowUp } from 'lucide-react';
 import { PROFILE_DATA } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
 
@@ -228,12 +228,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
               </div>
 
               {/* Réseaux */}
-              <div className="pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-2">
+              <div className="pt-2 border-t border-gray-200 dark:border-gray-700 flex flex-wrap items-center gap-2">
                 <a
                   href={PROFILE_DATA.github}
                   target="_blank"
                   rel="noreferrer"
                   className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
+                  title="Consulter le profil GitHub birekeidea-max"
                 >
                   <Github className="w-3 h-3 text-[#8B4513]" />
                   <span>GitHub</span>
@@ -243,9 +244,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                   target="_blank"
                   rel="noreferrer"
                   className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
+                  title="Consulter le profil LinkedIn Idea Bireke"
                 >
                   <Linkedin className="w-3 h-3 text-[#8B4513]" />
                   <span>LinkedIn</span>
+                </a>
+                <a
+                  href={PROFILE_DATA.x}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
+                  title="Consulter le compte X @IdeaB19613"
+                >
+                  <Twitter className="w-3 h-3 text-[#8B4513]" />
+                  <span>X (Twitter)</span>
                 </a>
               </div>
             </div>
