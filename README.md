@@ -39,12 +39,16 @@ L'objectif central est de **transformer les idées en solutions numériques conc
    - Bouton de redirection directe vers **WhatsApp** (`+243 999 428 6469`).
    - Bouton d'accès et de téléchargement/impression du **CV complet**.
 
-2. **Section Projets Concrets :**
-   - **AMR MUGOTE & FILS** : Plateforme de billetterie électronique pour la traversée lacustre Bukavu - Goma (Lac Kivu).
-   - **Plateforme Académique Connectée** : Gestion centralisée des cours, TP et travaux pratiques pour étudiants de l'UCB.
-   - **Agro-Kivu Market** : Solution de mise en relation directe entre producteurs agricoles locaux et acheteurs urbains.
-   - **Assistant Étudiant IA** : Outil d'apprentissage interactif basé sur l'IA (Gemma / LLM) pour l'assistance aux révisions académiques.
-   - Filtrage par catégorie (*Web*, *Mobile*, *IA*, *Tous*) et possibilité d'ajouter ou documenter ses propres projets.
+2. **Section Projets Phares & Réalisations :**
+   - **SGESC (Système de Gestion des Écoles Secondaires au Congo)** : Solution logicielle de numérisation administrative, académique et financière du secondaire en RDC.
+   - **AMR MUGOTE & FILS** : Plateforme de billetterie électronique pour la traversée lacustre Bukavu - Goma (Lac Kivu) avec intégration Mobile Money.
+   - **Gemma Kivu Agro** : Assistant agronomique intelligent basé sur les modèles ouverts Google Gemma au service des agriculteurs du Kivu.
+   - **Diagnostic de Plats Congolais** : Application d'IA (vision & scikit-learn) pour la reconnaissance nutritionnelle et culinaire des mets congolais.
+   - **CampusTel** : Architecture réseau et télécom interconnectant étudiants, facultés et services sur campus universitaire.
+   - Filtrage par catégorie (*Web*, *Mobile*, *IA*, *Tous*) et fiches techniques détaillées.
+
+3. **Optimisation pour Moteurs Génératifs (GEO) :**
+   - Intégration de balises sémantiques et de structured data **Schema.org JSON-LD** (`ProfilePage`, `Person`, `FAQPage`) pour l'extraction naturelle par les modèles d'IA (ChatGPT, Gemini, Perplexity, Claude).
 
 3. **Galerie Photos Personnalisée :**
    - Espace dédié à la publication de photos réelles (événements universitaires, hackathons, ateliers GDG, sessions de code).

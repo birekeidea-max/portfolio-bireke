@@ -9,24 +9,23 @@ import {
 
 export const PROFILE_DATA = {
   name: 'BIREKE BASHIGE IDEA',
-  title: 'DÉVELOPPEUR LOGICIEL & WEB | FLUTTER | PASSIONNÉ PAR L\'IA ET LES NOUVELLES TECHNOLOGIES',
-  catchphrase: 'Je transforme les idées en solutions numériques innovantes pour répondre aux défis du monde réel.',
-  shortBio: 'Étudiant en Sciences informatiques à l\'Université Catholique de Bukavu (UCB), je conçois des applications, des plateformes web et des solutions logicielles durables. Mon parcours intègre également l\'intelligence artificielle, le machine learning et les réseaux informatiques. Mon engagement est de mettre la technologie au service des personnes et de ma communauté.',
+  title: 'DÉVELOPPEUR INFORMATIQUE | WEB & MOBILE FULL-STACK | SOLUTIONS D\'IA & CLOUD',
+  catchphrase: 'Je conçois des architectures logicielles robustes, des solutions d\'IA adaptées au contexte africain et des intégrations fintech sécurisées.',
+  shortBio: 'Développeur informatique et étudiant en Systèmes Informatiques à l\'Université Catholique de Bukavu (UCB). Spécialiste du développement Web & Mobile Full-Stack, du Cloud Computing, de l\'Intelligence Artificielle (Gemini API, modèles Gemma, scikit-learn) et de l\'intégration de passerelles de paiement Mobile Money (FlexPay, CinetPay).',
   aboutMeParagraphs: [
-    'Actuellement étudiant en Sciences informatiques à l\'Université Catholique de Bukavu (UCB), je m\'investis avec rigueur et passion dans la conception, la réalisation et le déploiement de solutions logicielles adaptées à des besoins concrets.',
-    'Mon parcours comprend le développement de plateformes web complètes, l\'exploration active du développement mobile avec Flutter, ainsi que l\'approfondissement régulier de l\'intelligence artificielle et du machine learning à travers des ateliers et des activités pratiques.',
-    'Désireux d\'élargir constamment mon champ d\'expertise, j\'étudie également les réseaux informatiques et les télécommunications, un domaine complémentaire et stratégique au génie logiciel.',
-    'Au-delà du code, je suis animé par une ambition claire : transformer les idées en solutions numériques utiles, accessibles et adaptées aux réalités de mon environnement.'
+    'Bireke Bashige Idea est un développeur informatique basé à Bukavu (Sud-Kivu, République Démocratique du Congo), actuellement en formation en Systèmes Informatiques au sein de la prestigieuse Université Catholique de Bukavu (UCB). Acteur engagé de l\'écosystème technologique des Grands Lacs, il combine une solide assise en génie logiciel avec une spécialisation pointue en architectures logicielles modernes, Cloud Computing et réseaux de télécommunications.',
+    'Sur le plan applicatif et algorithmique, Bireke Bashige Idea conçoit et déploie des solutions numériques à fort impact socio-économique. Son expertise technique englobe le développement Web & Mobile Full-Stack (React, TypeScript, Node.js, Flutter), l\'Intelligence Artificielle appliquée (intégration des modèles Google Gemini API, expérimentations des modèles ouverts Gemma, apprentissage automatique avec scikit-learn) et l\'intégration de solutions de paiement Mobile Money africaines telles que FlexPay et CinetPay (M-Pesa, Airtel Money, Orange Money).',
+    'Reconnu pour sa participation active aux initiatives d\'innovation de pointe, Bireke Bashige Idea s\'est illustré au sein de l\'AI4EAC Innovation Challenge, des hackathons internationaux Major League Hacking (MLH) sur Devpost et des activités d\'incubation du Google Developer Groups (GDG) On Campus UCB. Ses réalisations phares incluent SGESC (Système de Gestion des Écoles Secondaires au Congo), la plateforme maritime AMR MUGOTE, l\'assistant agronomique Gemma Kivu Agro, le système de Diagnostic de Plats Congolais par IA et la solution CampusTel.'
   ],
   interests: [
-    'Conception et architecture de logiciels modulaires',
-    'Développement d\'applications web et plateformes collaboratives',
-    'Développement d\'applications mobiles multiplateformes avec Flutter',
-    'Intelligence artificielle appliquée et exploration des modèles Gemma',
-    'Fondements du Machine Learning et traitement des données',
-    'Réseaux informatiques et infrastructures de télécommunications',
-    'Transformation numérique de l\'éducation et de l\'agriculture au Kivu',
-    'Collaboration au sein d\'initiatives d\'innovation technologique'
+    'Développement Web & Mobile Full-Stack (React, TypeScript, Flutter)',
+    'Intelligence Artificielle appliquée (Google Gemini API, modèles Gemma)',
+    'Machine Learning & Data Science (scikit-learn, classification, vision)',
+    'Intégration de passerelles Mobile Money (FlexPay, CinetPay, M-Pesa, Airtel)',
+    'Architectures Cloud Computing & Déploiement distribué',
+    'Systèmes Informatiques, Réseaux et Télécommunications',
+    'Transformation numérique de l\'éducation et de l\'agriculture au Sud-Kivu',
+    'Participation aux hackathons internationaux (MLH Devpost, AI4EAC, GDG UCB)'
   ],
   email: 'birekeidea@gmail.com',
   phone: '+243 999 428 6469',
@@ -41,60 +40,94 @@ export const PROFILE_DATA = {
 
 export const PROJECTS_DATA: ProjectItem[] = [
   {
-    id: 'amr-mugote',
-    name: 'AMR MUGOTE & FILS',
-    category: 'Développement web, transport et transformation numérique',
+    id: 'sgesc',
+    name: 'SGESC — SYSTÈME DE GESTION DES ÉCOLES SECONDAIRES AU CONGO',
+    category: 'Génie logiciel, gestion scolaire & transformation numérique',
     categoryKey: 'web',
-    shortDescription: 'Une plateforme de billetterie électronique conçue pour moderniser la réservation des voyages sur le lac Kivu entre Bukavu et Goma.',
-    problemSolved: 'La réservation traditionnelle des billets de transport lacustre entraîne des files d\'attente physiques et complique le suivi administratif des passagers et des places disponibles.',
-    solutionProposed: 'AMR Mugote & Fils offre une interface web épurée permettant aux passagers de consulter les horaires, réserver leurs places et obtenir un billet électronique sécurisé.',
+    shortDescription: 'Solution numérique complète de gouvernance scolaire conçue pour numériser la gestion administrative, académique et financière des établissements secondaires en RDC.',
+    problemSolved: 'La gestion manuscrite sur papier des effectifs, bulletins, présences et frais scolaires engendre des pertes de données, des retards de consolidation et une opacité administrative dans les écoles de l\'Est de la RDC.',
+    solutionProposed: 'SGESC centralise la gestion des promotions, l\'édition automatisée des palmarès et bulletins de notes, la gestion des effectifs et le suivi financier avec possibilité d\'intégration Mobile Money.',
     features: [
-      'Consultation des horaires de traversée sur le lac Kivu en temps réel.',
-      'Réservation de billets en ligne adaptée aux usagers.',
-      'Sélection des classes de voyage selon les disponibilités.',
-      'Génération de billets électroniques munis de codes de vérification.',
-      'Interface d\'administration pour la gestion des passagers et traversées.'
+      'Gestion centralisée des effectifs d\'élèves, promotions et inscriptions annuelles.',
+      'Calcul automatique des moyennes, classements et génération des bulletins.',
+      'Suivi des frais de scolarité et états financiers avec reçus numériques.',
+      'Gestion des rôles et accès sécurisés (Direction, Enseignants, Comptabilité).'
     ],
-    technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB'],
-    demoUrl: 'https://amr-mugote.gdgocucbukavu.dev/',
-    status: 'Plateforme en ligne & Démo active',
-    note: 'Projet présenté dans le cadre des activités d\'innovation et Demo Day.'
+    technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'Tailwind CSS', 'Mobile Money'],
+    demoUrl: 'https://gestion-ecoles.vercel.app/',
+    status: 'Plateforme déployée & Opérationnelle',
+    note: 'Projet conçu pour répondre aux standards du système éducatif congolais.'
   },
   {
-    id: 'gestion-ecoles',
-    name: 'GESTION DES ÉCOLES',
-    category: 'Développement web et transformation numérique éducative',
+    id: 'amr-mugote',
+    name: 'AMR MUGOTE & FILS',
+    category: 'Développement web, billetterie maritime & transport lacustre',
     categoryKey: 'web',
-    shortDescription: 'Une solution numérique conçue pour moderniser le système scolaire, automatiser le suivi des élèves et simplifier la gestion administrative.',
-    problemSolved: 'Le manque de centralisation des registres scolaires papier génère des pertes de données, des lenteurs administratives et une difficulté de suivi des frais scolaires.',
-    solutionProposed: 'Plateforme centralisée permettant d\'enregistrer les promotions, de gérer les fiches d\'élèves et d\'assurer la traçabilité des opérations académiques.',
+    shortDescription: 'Plateforme moderne de billetterie électronique conçue pour digitaliser et sécuriser la réservation des traversées maritimes sur le lac Kivu entre Bukavu et Goma.',
+    problemSolved: 'Les files d\'attente physiques aux ports, les surréservations et la lenteur du contrôle manuel des titres d\'embarquement des passagers entre Bukavu et Goma.',
+    solutionProposed: 'AMR Mugote offre une billetterie en ligne fluide avec choix de classe, génération de e-billet sécurisé muni d\'un identifiant unique et synchronisation des manifests passagers.',
     features: [
-      'Centralisation sécurisée des dossiers scolaires et notes des élèves.',
-      'Gestion des effectifs par classe et année scolaire.',
-      'Suivi de la situation administrative et académique en temps réel.',
-      'Interface épurée et intuitive adaptée au personnel administratif.'
+      'Consultation des horaires de traversée maritime sur le lac Kivu en temps réel.',
+      'Réservation en ligne multi-classes avec intégration des paiements mobiles.',
+      'Génération instantanée de billets électroniques munis de codes de contrôle.',
+      'Dashboard d\'administration portuaire pour le pointage et la gestion des passagers.'
     ],
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Web'],
-    demoUrl: 'https://gestion-ecoles.vercel.app/',
-    status: 'Plateforme déployée'
+    technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'FlexPay'],
+    demoUrl: 'https://amr-mugote.gdgocucbukavu.dev/',
+    status: 'Plateforme en ligne & Démo active',
+    note: 'Présenté aux initiatives d\'innovation et Demo Day du GDG On Campus UCB.'
   },
   {
     id: 'gemma-kivu-agro',
-    name: 'GEMMA-KIVU AGRO',
-    category: 'Intelligence artificielle, agriculture et innovation locale',
+    name: 'GEMMA KIVU AGRO',
+    category: 'Intelligence artificielle, agronomie & modèles ouverts Gemma',
     categoryKey: 'ai',
-    shortDescription: 'Projet d\'intelligence artificielle explorant l\'accompagnement des agriculteurs du Kivu face aux maladies des cultures vivrières.',
-    problemSolved: 'L\'accès limité aux connaissances agronomiques spécialisées ralentit le diagnostic précoce des maladies végétales comme celles affectant les bananiers au Kivu.',
-    solutionProposed: 'Assistant intelligent basé sur les modèles ouverts Gemma, vulgarisant les pratiques de traitement agricole dans un langage accessible.',
+    shortDescription: 'Solution d\'assistance agronomique intelligente exploitant les modèles d\'IA Google Gemma pour accompagner les agriculteurs du Kivu dans le diagnostic des maladies végétales.',
+    problemSolved: 'Le manque critique d\'agronomes spécialisés sur le terrain face aux ravageurs et maladies des cultures vivrières (flétrissement bactérien du bananier, mosaïque du manioc).',
+    solutionProposed: 'Assistant IA conversationnel et diagnostique adapté aux contextes agricoles locaux du Sud-Kivu, vulgarisant les protocoles de remédiation en français et swahili.',
     features: [
-      'Exploration des modèles ouverts Gemma pour l\'analyse de contextes agronomiques.',
-      'Fiches de diagnostic pour les maladies courantes du bananier.',
-      'Assistance interactive et conseils préventifs pour les exploitants.',
-      'Conception pensée pour les conditions et contraintes du terrain au Sud-Kivu.'
+      'Exploitation des modèles ouverts légers Google Gemma pour le raisonnement agricole.',
+      'Fiches de diagnostic rapide des pathologies du bananier, manioc et caféier.',
+      'Recommandations de traitement agronomique préventif et curatif adaptées au sol volcanique.',
+      'Interface allégée optimisée pour les zones à faible connectivité internet.'
     ],
-    technologies: ['Intelligence Artificielle', 'Modèles Gemma', 'Machine Learning', 'Web'],
+    technologies: ['Intelligence Artificielle', 'Google Gemma', 'Python', 'scikit-learn', 'React'],
     demoUrl: 'https://gemma-kivu-agro-app.vercel.app/',
-    status: 'Projet d\'innovation & Exploration IA'
+    status: 'Projet d\'innovation IA & Recherche appliquée'
+  },
+  {
+    id: 'diagnostic-plats-congolais',
+    name: 'DIAGNOSTIC DE PLATS CONGOLAIS',
+    category: 'Intelligence artificielle, vision par ordinateur & gastronomie',
+    categoryKey: 'ai',
+    shortDescription: 'Application d\'IA dédiée à la reconnaissance visuelle, à l\'analyse nutritionnelle et à la valorisation culturelle des mets traditionnels congolais.',
+    problemSolved: 'L\'absence de bases de données et d\'outils d\'IA entraînés sur le patrimoine culinaire d\'Afrique centrale, limitant le suivi nutritionnel moderne des régimes locaux.',
+    solutionProposed: 'Modèle de classification d\'images et d\'apprentissage automatique capable d\'identifier les plats typiques (Pondu, Fufu, Sombe, Poissons du Lac Kivu) et d\'estimer leurs valeurs nutritives.',
+    features: [
+      'Reconnaissance automatique de plats traditionnels congolais par vision IA.',
+      'Estimation des apports nutritionnels (protéines, glucides, micronutriments).',
+      'Documentation des ingrédients locaux et variantes régionales de préparation.',
+      'Interface interactive rapide utilisable sur mobile et web.'
+    ],
+    technologies: ['Intelligence Artificielle', 'Gemini API', 'scikit-learn', 'Python', 'React'],
+    status: 'En développement actif & Prototype fonctionnel'
+  },
+  {
+    id: 'campustel',
+    name: 'CAMPUSTEL',
+    category: 'Réseaux, télécommunications & services connectés universitaires',
+    categoryKey: 'mobile',
+    shortDescription: 'Système innovant de télécommunications et d\'annuaire interconnecté destiné à fluidifier les communications et les services au sein des campus universitaires.',
+    problemSolved: 'La dispersion des flux de communication entre étudiants, facultés et administration, et la dépendance aux forfaits data coûteux en milieu universitaire.',
+    solutionProposed: 'Plateforme CampusTel combinant VoIP interne sur réseau campus, annuaire académique vérifié et messagerie instantanée locale sécurisée.',
+    features: [
+      'Annuaire interconnecté des facultés, services académiques et associations étudiantes.',
+      'Intégration d\'architectures réseau VoIP adaptées aux campus universitaires.',
+      'Portail d\'alertes et de notifications académiques officielles en temps réel.',
+      'Conception multiplateforme accessible sur smartphone et desktop.'
+    ],
+    technologies: ['Flutter', 'Dart', 'Réseaux IP', 'WebRTC', 'Node.js', 'Systèmes Informatiques'],
+    status: 'Phase de recherche et prototype expérimental'
   }
 ];
 
@@ -126,11 +159,27 @@ export const SKILL_CATEGORIES_DATA: SkillCategoryGroup[] = [
   },
   {
     title: 'INTELLIGENCE ARTIFICIELLE & MACHINE LEARNING',
-    subtitle: 'Exploration active des modèles ouverts',
+    subtitle: 'Modèles fondationnels, open-source et apprentissage statistique',
     skills: [
-      { name: 'IA Générative', status: 'Exploration active', description: 'Compréhension et intégration de modèles conversationnels' },
-      { name: 'Modèles Gemma', status: 'Exploration active', description: 'Expérimentation sur les modèles légers Google pour cas d\'usage agricoles' },
-      { name: 'Machine Learning', status: 'En cours d\'apprentissage', description: 'Ateliers pratiques, traitement de données et apprentissage supervisé' }
+      { name: 'Google Gemini API', status: 'Pratiqué', description: 'Intégration d\'IA multimodale avancée, génération de contenu et raisonnement structuré' },
+      { name: 'Modèles Gemma', status: 'Exploration active', description: 'Expérimentation sur les LLM légers open-weights de Google pour applications agricoles et locales' },
+      { name: 'scikit-learn & Python', status: 'Pratiqué', description: 'Classification, prétraitement de données, modèles prédictifs et vision par ordinateur' }
+    ]
+  },
+  {
+    title: 'FINTECH & PAIEMENTS MOBILE MONEY',
+    subtitle: 'Intégration des canaux de transactions sécurisées en RDC & Afrique',
+    skills: [
+      { name: 'FlexPay', status: 'Pratiqué', description: 'Intégration de passerelle de paiement multi-opérateurs (M-Pesa, Airtel Money, Orange Money)' },
+      { name: 'CinetPay', status: 'Pratiqué', description: 'Déploiement de solutions de checkout en ligne et encaissements automatisés' }
+    ]
+  },
+  {
+    title: 'CLOUD COMPUTING & DÉPLOIEMENT',
+    subtitle: 'Infrastructures cloud, CI/CD et hébergement moderne',
+    skills: [
+      { name: 'Cloud Computing & Vercel', status: 'Pratiqué', description: 'Déploiement continu, fonctions serverless et monitoring d\'applications' },
+      { name: 'Architectures RESTful', status: 'Pratiqué', description: 'Conception d\'APIs modulaires sécurisées et gestion de microservices légers' }
     ]
   },
   {
@@ -138,12 +187,38 @@ export const SKILL_CATEGORIES_DATA: SkillCategoryGroup[] = [
     subtitle: 'Domaines d\'études complémentaires au génie logiciel',
     skills: [
       { name: 'Réseaux informatiques', status: 'En cours d\'apprentissage', description: 'Étude des protocoles TCP/IP, topologies, routage et commutation' },
-      { name: 'Télécommunications', status: 'En cours d\'apprentissage', description: 'Infrastructures de communication, transmission et réseaux sans fil' }
+      { name: 'Télécommunications & VoIP', status: 'En cours d\'apprentissage', description: 'Infrastructures de communication, transmission IP et technologies CampusTel' }
     ]
   }
 ];
 
 export const EXPERIENCES_DATA: ExperienceItem[] = [
+  {
+    id: 'exp-ai4eac',
+    title: 'CHALLENGE D\'INNOVATION EN INTELLIGENCE ARTIFICIELLE',
+    organization: 'AI4EAC INNOVATION CHALLENGE',
+    period: '2025 - 2026',
+    badge: 'Compétition Régionale IA',
+    description: 'Participation à la compétition technologique AI4EAC pour concevoir des solutions basées sur l\'intelligence artificielle répondant aux défis de l\'Afrique de l\'Est.',
+    highlights: [
+      'Pitch et modélisation de solutions prédictives pour les enjeux régionaux.',
+      'Collaboration interdisciplinaire et mise à l\'épreuve d\'architectures IA concrètes.',
+      'Échanges avec des mentors et chercheurs de renommée régionale.'
+    ]
+  },
+  {
+    id: 'exp-mlh',
+    title: 'HACKATHONS MONDIAUX & HACKER COMMUNITY',
+    organization: 'MAJOR LEAGUE HACKING (MLH) DEVPOST',
+    period: 'En cours',
+    badge: 'Hackathons Internationaux',
+    description: 'Immersion dans les hackathons technologiques mondiaux pour prototyper en un temps record des solutions logicielles innovantes.',
+    highlights: [
+      'Participation à des challenges techniques Devpost axés sur l\'IA et le cloud.',
+      'Intégration d\'APIs modernes et bibliothèques logicielles open-source.',
+      'Collaboration et émulation avec la communauté mondiale de hackers.'
+    ]
+  },
   {
     id: 'exp-gdg',
     title: 'PARTICIPATION AUX INITIATIVES D\'INNOVATION & DEMO DAY',
@@ -152,9 +227,9 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     badge: 'Communauté & Incubation',
     description: 'Participation active aux ateliers, activités communautaires et programmes d\'incubation technologique de l\'Université Catholique de Bukavu.',
     highlights: [
-      'Présentation et développement du projet de billetterie lacustre AMR Mugote & Fils au Demo Day.',
-      'Partage d\'expériences techniques avec les étudiants développeurs de l\'UCB.',
-      'Collaboration autour de solutions numériques répondant aux besoins de la région.'
+      'Présentation et développement de la plateforme maritime AMR MUGOTE au Demo Day.',
+      'Ateliers et échanges techniques avec les étudiants développeurs de l\'UCB.',
+      'Promotion des technologies Google (Flutter, Gemini, Firebase).'
     ]
   },
   {
@@ -163,47 +238,21 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     organization: 'INITIATIVES GEMMA & COMMUNAUTÉ TECH',
     period: 'En cours',
     badge: 'Intelligence Artificielle',
-    description: 'Exploration concrète de l\'intelligence artificielle pour apporter des réponses aux défis de la région du Kivu.',
+    description: 'Exploration concrète de l\'intelligence artificielle pour apporter des réponses aux défis du Sud-Kivu.',
     highlights: [
-      'Conception du projet Gemma-Kivu Agro destiné à vulgariser l\'information agricole.',
+      'Conception de Gemma Kivu Agro destiné au diagnostic agricole.',
       'Expérimentation des capacités d\'assistance des modèles ouverts Gemma.',
       'Veille technologique continue sur le machine learning appliqué.'
-    ]
-  },
-  {
-    id: 'exp-mlh',
-    title: 'PARTICIPATION AUX INITIATIVES ET HACKATHONS',
-    organization: 'MAJOR LEAGUE HACKING (MLH)',
-    period: 'En cours',
-    badge: 'Hackathons Internationaux',
-    description: 'Immersion dans les hackathons technologiques pour développer ses compétences de résolution rapide de problèmes en équipe.',
-    highlights: [
-      'Participation à des sessions collaboratives et challenges techniques.',
-      'Découverte d\'outils et bibliothèques logicielles open-source modernes.',
-      'Échanges avec la communauté mondiale de développeurs.'
-    ]
-  },
-  {
-    id: 'exp-workshops',
-    title: 'ATELIERS PRATIQUES EN IA & MACHINE LEARNING',
-    organization: 'FORMATIONS CONTINUES & ATELIERS TECHNIQUES',
-    period: 'En cours',
-    badge: 'Formation Continue',
-    description: 'Approfondissement des notions théoriques et des implémentations de l\'intelligence artificielle.',
-    highlights: [
-      'Ateliers axés sur l\'analyse des données et la construction de modèles.',
-      'Étude continue des architectures logicielles et modèles de langage.',
-      'Orientation vers des applications concrètes pour la communauté.'
     ]
   }
 ];
 
 export const EDUCATION_DATA: EducationItem = {
   institution: 'UNIVERSITÉ CATHOLIQUE DE BUKAVU (UCB)',
-  degree: 'Sciences Informatiques',
+  degree: 'Systèmes Informatiques',
   status: 'Étudiant en cours de formation',
-  description: 'Formation universitaire complète axée sur les fondements de l\'informatique, l\'algorithmique, le génie logiciel, les systèmes et les bases de données.',
-  complementary: 'Apprentissage autodidacte régulier et participation à des ateliers techniques en réseaux informatiques, télécommunications, Flutter et intelligence artificielle.'
+  description: 'Formation universitaire d\'excellence axée sur l\'ingénierie des systèmes informatiques, l\'algorithmique, le génie logiciel, le Cloud, les réseaux et les bases de données.',
+  complementary: 'Spécialisations pratiques et certifications en cours en développement Web & Mobile Full-Stack, intelligence artificielle (Gemini API, Gemma, scikit-learn) et fintech Mobile Money.'
 };
 
 export const LANGUAGES_DATA: LanguageItem[] = [
