@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Times New Roman', Times, Georgia, serif;
+    --accent-chocolat: #8B4513;
+    --accent-chocolat-hover: #70360F;
+    --accent-chocolat-soft: #FBF4EE;
+    --bg-doux: #F4F4F5;
+    --surface-blanc: #FFFFFF;
+    --texte-noir: #111827;
+    --texte-gris: #4B5563;
+    --bordure-fine: #D1D5DB;
+  }
+
+  html, body {
+    font-family: 'Times New Roman', Times, Georgia, serif !important;
+    font-size: 12pt !important;
+    line-height: 1.6 !important;
+    background-color: #F4F4F5;
+    color: #111827;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+
+  /* Règle stricte pour tous les textes */
+  h1, h2, h3, h4, h5, h6, nav, button, input, textarea, select, span, p, a, div, li, label {
+    font-family: 'Times New Roman', Times, Georgia, serif !important;
+  }
+
+  /* Titres, boutons et menus obligatoirement en MAJUSCULES */
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    color: #111827;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.35 !important;
+  }
+
+  /* Paragraphes bien ordonnés avec interligne aéré */
+  p, li {
+    font-size: 12pt !important;
+    line-height: 1.6 !important;
+    color: #4B5563;
+  }
+
+  ::selection {
+    background-color: #8B4513;
+    color: #FFFFFF;
+  }
+}
+
+/* Thème sombre sobre (noir/anthracite et chocolat, sans bleu) */
+.dark body, html.dark {
+  background-color: #18181B !important;
+  color: #F4F4F5 !important;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #F4F4F5 !important;
+}
+
+.dark p, .dark li {
+  color: #D4D4D8 !important;
+}
+
+/* Scrollbar chocolat discrète */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F4F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B4513;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #70360F;
+}
