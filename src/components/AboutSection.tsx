@@ -16,7 +16,7 @@ export const AboutSection: React.FC = () => {
           <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#111827] dark:text-[#F4F4F5]">
             À propos de Bireke Idea
           </h2>
-          <p className="text-xs text-gray-600 dark:text-gray-400">
+          <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-medium">
             Parcours académique, vision technologique et engagement pour l'innovation locale.
           </p>
         </div>
@@ -30,9 +30,9 @@ export const AboutSection: React.FC = () => {
               <span>Parcours et vision en développement logiciel</span>
             </h3>
 
-            <div className="space-y-3 text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+            <div className="space-y-3 text-xs sm:text-sm text-gray-900 dark:text-white leading-relaxed">
               {PROFILE_DATA.aboutMeParagraphs.map((par, idx) => (
-                <p key={idx}>{par}</p>
+                <p key={idx} className="text-gray-900 dark:text-white leading-relaxed">{par}</p>
               ))}
             </div>
 
@@ -42,7 +42,7 @@ export const AboutSection: React.FC = () => {
                 <Compass className="w-3.5 h-3.5" />
                 <span>Mon approche</span>
               </div>
-              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
                 Apprendre avec rigueur, concevoir des solutions modulaires et stables, et collaborer activement au sein de projets technologiques utiles à Bukavu et dans la région.
               </p>
             </div>
@@ -55,7 +55,7 @@ export const AboutSection: React.FC = () => {
                 <Lightbulb className="w-4 h-4 text-[#8B4513]" />
                 <span>Domaines d'intérêt majeurs</span>
               </h3>
-              <p className="text-[11px] text-gray-500">
+              <p className="text-xs text-gray-700 dark:text-gray-300 font-medium">
                 Piliers technologiques développés au quotidien :
               </p>
             </div>
@@ -67,7 +67,7 @@ export const AboutSection: React.FC = () => {
                   className="flex items-start gap-2 p-2 rounded-lg bg-[#F4F4F5] dark:bg-[#18181B] border border-gray-200 dark:border-gray-700"
                 >
                   <Check className="w-3.5 h-3.5 text-[#8B4513] shrink-0 mt-0.5" />
-                  <span className="text-gray-800 dark:text-gray-200 leading-relaxed">
+                  <span className="text-gray-900 dark:text-white leading-relaxed font-medium">
                     {interest}
                   </span>
                 </div>

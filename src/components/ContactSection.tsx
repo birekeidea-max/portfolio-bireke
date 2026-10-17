@@ -108,7 +108,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
           <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#111827] dark:text-[#F4F4F5]">
             Me contacter directement
           </h2>
-          <p className="text-xs text-gray-600 dark:text-gray-400">
+          <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-medium">
             Échangez directement avec moi sur WhatsApp ou par e-mail pour vos projets et propositions.
           </p>
         </div>
@@ -189,7 +189,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                     <Mail className="w-3.5 h-3.5 text-[#8B4513] shrink-0" />
                     <a
                       href={`mailto:${PROFILE_DATA.email}`}
-                      className="text-gray-800 dark:text-gray-200 font-medium truncate hover:underline"
+                      className="text-gray-900 dark:text-white font-semibold truncate hover:underline"
                     >
                       {PROFILE_DATA.email}
                     </a>
@@ -207,7 +207,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                 <div className="p-2.5 bg-[#F4F4F5] dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Phone className="w-3.5 h-3.5 text-[#8B4513] shrink-0" />
-                    <span className="text-gray-800 dark:text-gray-200 font-medium">
+                    <span className="text-gray-900 dark:text-white font-semibold">
                       {PROFILE_DATA.phone}
                     </span>
                   </div>
@@ -221,7 +221,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                 </div>
 
                 {/* Ville & Campus */}
-                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-[11px] pt-1">
+                <div className="flex items-center gap-2 text-gray-800 dark:text-gray-200 text-xs pt-1 font-medium">
                   <MapPin className="w-3.5 h-3.5 text-[#8B4513] shrink-0" />
                   <span>{PROFILE_DATA.city} · {PROFILE_DATA.university}</span>
                 </div>
@@ -233,7 +233,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                   href={PROFILE_DATA.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
+                  className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
                   title="Consulter le profil GitHub birekeidea-max"
                 >
                   <Github className="w-3 h-3 text-[#8B4513]" />
@@ -243,7 +243,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                   href={PROFILE_DATA.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
+                  className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
                   title="Consulter le profil LinkedIn Idea Bireke"
                 >
                   <Linkedin className="w-3 h-3 text-[#8B4513]" />
@@ -253,7 +253,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                   href={PROFILE_DATA.x}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
+                  className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-[11px] font-bold uppercase inline-flex items-center gap-1.5 hover:border-[#8B4513]"
                   title="Consulter le compte X @IdeaB19613"
                 >
                   <Twitter className="w-3 h-3 text-[#8B4513]" />
@@ -271,7 +271,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
               <h3 className="font-bold uppercase text-base text-[#111827] dark:text-[#F4F4F5]">
                 Envoyer un message direct
               </h3>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-700 dark:text-gray-300 font-medium">
                 Remplissez les champs ci-dessous : votre message sera transmis directement dans WhatsApp à Bireke Idea.
               </p>
             </div>
@@ -279,7 +279,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
             <form onSubmit={handleSendViaWhatsApp} className="space-y-3 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold uppercase mb-1 text-gray-700 dark:text-gray-300">
+                  <label className="block font-bold uppercase mb-1 text-gray-900 dark:text-gray-100">
                     Votre nom *
                   </label>
                   <input
@@ -288,12 +288,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                     placeholder="Ex: Patrick Cishugi"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-transparent focus:outline-none focus:border-[#8B4513]"
+                    className="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-transparent text-gray-900 dark:text-white focus:outline-none focus:border-[#8B4513]"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold uppercase mb-1 text-gray-700 dark:text-gray-300">
+                  <label className="block font-bold uppercase mb-1 text-gray-900 dark:text-gray-100">
                     Votre contact (Téléphone ou Email)
                   </label>
                   <input
@@ -301,13 +301,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                     placeholder="Ex: +243... ou nom@domaine.com"
                     value={formData.contactInfo}
                     onChange={(e) => setFormData({ ...formData, contactInfo: e.target.value })}
-                    className="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-transparent focus:outline-none focus:border-[#8B4513]"
+                    className="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-transparent text-gray-900 dark:text-white focus:outline-none focus:border-[#8B4513]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold uppercase mb-1 text-gray-700 dark:text-gray-300">
+                <label className="block font-bold uppercase mb-1 text-gray-900 dark:text-gray-100">
                   Objet de l'échange
                 </label>
                 <input
@@ -315,12 +315,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   placeholder="Ex: Proposition de projet, stage, collaboration..."
-                  className="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-transparent focus:outline-none focus:border-[#8B4513]"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-transparent text-gray-900 dark:text-white focus:outline-none focus:border-[#8B4513]"
                 />
               </div>
 
               <div>
-                <label className="block font-bold uppercase mb-1 text-gray-700 dark:text-gray-300">
+                <label className="block font-bold uppercase mb-1 text-gray-900 dark:text-gray-100">
                   Votre message *
                 </label>
                 <textarea
@@ -329,12 +329,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                   placeholder="Écrivez votre message ici..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2.5 bg-transparent focus:outline-none focus:border-[#8B4513] resize-none"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2.5 bg-transparent text-gray-900 dark:text-white focus:outline-none focus:border-[#8B4513] resize-none"
                 />
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-gray-200 dark:border-gray-700">
-                <span className="text-[11px] text-gray-500">
+                <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">
                   Transmission instantanée vers WhatsApp : {PROFILE_DATA.phone}
                 </span>
 
@@ -342,7 +342,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                   <button
                     type="button"
                     onClick={handleSendViaEmail}
-                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded font-bold uppercase text-[11px] hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 rounded font-bold uppercase text-[11px] hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
                   >
                     Via E-mail
                   </button>
@@ -363,7 +363,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
         </div>
 
         {/* Footer épuré */}
-        <footer className="pt-4 border-t border-[#D1D5DB] dark:border-[#3F3F46] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
+        <footer className="pt-4 border-t border-[#D1D5DB] dark:border-[#3F3F46] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-700 dark:text-gray-300 font-medium">
           <div>
             <span className="font-bold text-[#111827] dark:text-white uppercase">{PROFILE_DATA.name}</span>
             <span> — Étudiant en Sciences Informatiques à l'UCB (Bukavu, RD Congo)</span>

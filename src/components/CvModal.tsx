@@ -104,7 +104,7 @@ ${LANGUAGES_DATA.map(l => `- ${l.name} : ${l.level}`).join('\n')}
             <p className="font-bold text-[#8B4513] uppercase text-xs sm:text-sm">
               {PROFILE_DATA.title}
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-gray-600">
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-gray-900 font-medium">
               <span>{PROFILE_DATA.city}</span>
               <span>·</span>
               <span>{EDUCATION_DATA.institution}</span>
@@ -127,7 +127,7 @@ ${LANGUAGES_DATA.map(l => `- ${l.name} : ${l.level}`).join('\n')}
             <h3 className="font-bold uppercase text-xs tracking-wider text-[#8B4513] border-b border-gray-200 pb-1">
               Profil & Objectifs
             </h3>
-            <p className="leading-relaxed text-gray-700">
+            <p className="leading-relaxed text-gray-900 font-normal">
               {PROFILE_DATA.shortBio}
             </p>
           </div>
@@ -140,11 +140,11 @@ ${LANGUAGES_DATA.map(l => `- ${l.name} : ${l.level}`).join('\n')}
             <div className="space-y-1">
               <div className="flex justify-between items-baseline font-bold">
                 <span className="text-[#111827]">{EDUCATION_DATA.institution}</span>
-                <span className="text-xs text-gray-500">{EDUCATION_DATA.status}</span>
+                <span className="text-xs text-gray-700 font-bold">{EDUCATION_DATA.status}</span>
               </div>
-              <p className="font-semibold text-gray-700">{EDUCATION_DATA.degree}</p>
-              <p className="text-gray-600 text-xs leading-relaxed">{EDUCATION_DATA.description}</p>
-              <p className="text-gray-600 text-xs italic">{EDUCATION_DATA.complementary}</p>
+              <p className="font-semibold text-gray-900">{EDUCATION_DATA.degree}</p>
+              <p className="text-gray-900 text-xs leading-relaxed">{EDUCATION_DATA.description}</p>
+              <p className="text-gray-800 text-xs italic">{EDUCATION_DATA.complementary}</p>
             </div>
           </div>
 
@@ -157,7 +157,7 @@ ${LANGUAGES_DATA.map(l => `- ${l.name} : ${l.level}`).join('\n')}
               {SKILL_CATEGORIES_DATA.map((cat, idx) => (
                 <div key={idx} className="p-2 border border-gray-200 rounded-md bg-gray-50">
                   <span className="font-bold text-[#8B4513] block uppercase mb-0.5">{cat.title}</span>
-                  <p className="text-gray-700">{cat.skills.map(s => s.name).join(', ')}</p>
+                  <p className="text-gray-900 font-medium">{cat.skills.map(s => s.name).join(', ')}</p>
                 </div>
               ))}
             </div>
@@ -172,10 +172,10 @@ ${LANGUAGES_DATA.map(l => `- ${l.name} : ${l.level}`).join('\n')}
               <div key={exp.id} className="space-y-1">
                 <div className="flex justify-between items-baseline font-bold text-xs sm:text-sm">
                   <span className="text-[#111827]">{exp.title}</span>
-                  <span className="text-xs text-gray-500">{exp.period}</span>
+                  <span className="text-xs text-gray-700 font-bold">{exp.period}</span>
                 </div>
                 <p className="text-xs font-semibold text-[#8B4513]">{exp.organization} — {exp.badge}</p>
-                <p className="text-xs text-gray-600">{exp.description}</p>
+                <p className="text-xs text-gray-900">{exp.description}</p>
               </div>
             ))}
           </div>
@@ -185,7 +185,7 @@ ${LANGUAGES_DATA.map(l => `- ${l.name} : ${l.level}`).join('\n')}
             <h3 className="font-bold uppercase text-xs tracking-wider text-[#8B4513] border-b border-gray-200 pb-1">
               Langues
             </h3>
-            <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-700">
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-900">
               {LANGUAGES_DATA.map((l, idx) => (
                 <span key={idx}><strong>{l.name}</strong> ({l.level})</span>
               ))}

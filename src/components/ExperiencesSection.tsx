@@ -16,7 +16,7 @@ export const ExperiencesSection: React.FC = () => {
           <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#111827] dark:text-[#F4F4F5]">
             Parcours dans l'innovation
           </h2>
-          <p className="text-xs text-gray-600 dark:text-gray-400">
+          <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-medium">
             Participation aux initiatives d'incubation, hackathons et ateliers d'intelligence artificielle.
           </p>
         </div>
@@ -42,13 +42,13 @@ export const ExperiencesSection: React.FC = () => {
                   </div>
 
                   {exp.badge && (
-                    <span className="self-start sm:self-auto px-2 py-0.5 rounded text-[10px] font-semibold bg-[#F4F4F5] dark:bg-[#18181B] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+                    <span className="self-start sm:self-auto px-2 py-0.5 rounded text-[10px] font-semibold bg-[#F4F4F5] dark:bg-[#18181B] text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700">
                       {exp.badge}
                     </span>
                   )}
                 </div>
 
-                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-900 dark:text-gray-100 leading-relaxed font-normal">
                   {exp.description}
                 </p>
 
@@ -56,11 +56,11 @@ export const ExperiencesSection: React.FC = () => {
                   <span className="text-[11px] font-bold uppercase text-[#111827] dark:text-[#F4F4F5] block">
                     Points marquants :
                   </span>
-                  <ul className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                  <ul className="space-y-1 text-xs sm:text-sm text-gray-800 dark:text-gray-200">
                     {exp.highlights.map((h, hIdx) => (
                       <li key={hIdx} className="flex items-start gap-1.5">
                         <Check className="w-3.5 h-3.5 text-[#8B4513] shrink-0 mt-0.5" />
-                        <span>{h}</span>
+                        <span className="text-gray-900 dark:text-gray-100">{h}</span>
                       </li>
                     ))}
                   </ul>

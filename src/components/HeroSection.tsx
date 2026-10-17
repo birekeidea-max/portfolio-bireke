@@ -243,12 +243,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
           <p className="text-xs sm:text-sm font-bold text-[#8B4513] uppercase tracking-wide">
             {PROFILE_DATA.title}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-gray-600 dark:text-gray-400 pt-1">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-gray-800 dark:text-gray-200 font-medium pt-1">
             <span className="inline-flex items-center gap-1">
               <GraduationCap className="w-3.5 h-3.5 text-[#8B4513]" />
               <span>Université Catholique de Bukavu (UCB)</span>
             </span>
-            <span className="text-gray-400">·</span>
+            <span className="text-[#8B4513] font-bold">·</span>
             <span className="inline-flex items-center gap-1">
               <MapPin className="w-3.5 h-3.5 text-[#8B4513]" />
               <span>Bukavu, Sud-Kivu, RD Congo</span>
@@ -258,10 +258,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
 
         {/* 3. DESCRIPTIF DU PROFIL */}
         <div className="max-w-2xl mx-auto bg-white dark:bg-[#27272A] p-4 rounded-xl border border-[#D1D5DB] dark:border-[#3F3F46] text-left space-y-2 shadow-xs">
-          <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-xs sm:text-sm text-gray-900 dark:text-white font-bold leading-relaxed">
             « {PROFILE_DATA.catchphrase} »
           </p>
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-xs sm:text-sm text-gray-900 dark:text-gray-100 leading-relaxed font-normal">
             {PROFILE_DATA.shortBio}
           </p>
         </div>
@@ -291,7 +291,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
           {/* Bouton Projets */}
           <button
             onClick={() => scrollToSection('projets')}
-            className="px-5 py-2.5 bg-[#E5E7EB] dark:bg-[#3F3F46] hover:bg-[#D1D5DB] dark:hover:bg-[#52525B] text-gray-800 dark:text-gray-200 text-xs sm:text-sm font-bold rounded-lg cursor-pointer transition-colors inline-flex items-center gap-1.5 uppercase tracking-wide"
+            className="px-5 py-2.5 bg-[#E5E7EB] dark:bg-[#3F3F46] hover:bg-[#D1D5DB] dark:hover:bg-[#52525B] text-gray-900 dark:text-white text-xs sm:text-sm font-bold rounded-lg cursor-pointer transition-colors inline-flex items-center gap-1.5 uppercase tracking-wide"
           >
             <span>Mes projets</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -299,7 +299,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
         </div>
 
         {/* 5. COORDONNÉES RAPIDES */}
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-gray-600 dark:text-gray-400 pt-1">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-gray-800 dark:text-gray-200 font-medium pt-1">
           <a
             href={PROFILE_DATA.github}
             target="_blank"

@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
         </button>
 
         {/* Menu Desktop en MAJUSCULES */}
-        <nav className="hidden md:flex items-center gap-6 text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+        <nav className="hidden md:flex items-center gap-6 text-xs font-bold uppercase text-gray-900 dark:text-white">
           <button onClick={() => scrollTo('hero')} className="hover:text-[#8B4513] cursor-pointer">
             Accueil
           </button>
@@ -116,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
       {/* Menu Déroulant Mobile */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-[#D1D5DB] dark:border-[#3F3F46] bg-white dark:bg-[#27272A] px-5 py-4 space-y-3 text-xs font-bold uppercase">
-          <nav className="flex flex-col space-y-2.5 text-gray-800 dark:text-gray-200">
+          <nav className="flex flex-col space-y-2.5 text-gray-900 dark:text-white">
             <button onClick={() => scrollTo('hero')} className="text-left py-1 hover:text-[#8B4513]">
               Accueil
             </button>

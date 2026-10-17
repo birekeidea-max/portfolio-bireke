@@ -16,7 +16,7 @@ export const EducationSection: React.FC = () => {
           <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#111827] dark:text-[#F4F4F5]">
             Formation Académique & Langues
           </h2>
-          <p className="text-xs text-gray-600 dark:text-gray-400">
+          <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-medium">
             Études universitaires en Sciences Informatiques et compétences linguistiques.
           </p>
         </div>
@@ -33,17 +33,17 @@ export const EducationSection: React.FC = () => {
                 <h3 className="text-base sm:text-lg font-bold uppercase text-[#111827] dark:text-[#F4F4F5]">
                   {EDUCATION_DATA.institution}
                 </h3>
-                <p className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">
                   {EDUCATION_DATA.degree}
                 </p>
               </div>
 
-              <span className="self-start sm:self-auto px-2.5 py-1 rounded text-[10px] font-semibold bg-[#F4F4F5] dark:bg-[#18181B] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+              <span className="self-start sm:self-auto px-2.5 py-1 rounded text-[10px] font-semibold bg-[#F4F4F5] dark:bg-[#18181B] text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700">
                 {EDUCATION_DATA.status}
               </span>
             </div>
 
-            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-gray-900 dark:text-gray-100 leading-relaxed font-normal">
               {EDUCATION_DATA.description}
             </p>
 
@@ -53,7 +53,7 @@ export const EducationSection: React.FC = () => {
                 <Network className="w-3.5 h-3.5" />
                 <span>Apprentissage complémentaire</span>
               </div>
-              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 leading-relaxed font-normal">
                 {EDUCATION_DATA.complementary}
               </p>
             </div>
@@ -68,7 +68,7 @@ export const EducationSection: React.FC = () => {
                   Langues Pratiquées
                 </h3>
               </div>
-              <span className="text-[10px] text-gray-500">Communication</span>
+              <span className="text-[11px] text-gray-700 dark:text-gray-300 font-medium">Communication</span>
             </div>
 
             <div className="space-y-2">
@@ -77,7 +77,7 @@ export const EducationSection: React.FC = () => {
                   key={idx}
                   className="p-2.5 rounded-lg bg-[#F4F4F5] dark:bg-[#18181B] border border-gray-200 dark:border-gray-700 flex items-center justify-between gap-2 text-xs"
                 >
-                  <span className="font-bold text-[#111827] dark:text-[#F4F4F5]">
+                  <span className="font-bold text-gray-900 dark:text-white">
                     {lang.name}
                   </span>
                   <span className="text-[11px] text-[#8B4513] font-semibold">

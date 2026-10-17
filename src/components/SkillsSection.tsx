@@ -31,7 +31,7 @@ export const SkillsSection: React.FC = () => {
           <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#111827] dark:text-[#F4F4F5]">
             Compétences & Technologies
           </h2>
-          <p className="text-xs text-gray-600 dark:text-gray-400">
+          <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-medium">
             Présentation claire des technologies utilisées dans mes projets et des disciplines étudiées.
           </p>
         </div>
@@ -52,7 +52,7 @@ export const SkillsSection: React.FC = () => {
                   <h3 className="text-sm font-bold uppercase text-[#111827] dark:text-[#F4F4F5]">
                     {category.title}
                   </h3>
-                  <p className="text-[10px] text-gray-500">
+                  <p className="text-[11px] text-gray-700 dark:text-gray-300 font-medium">
                     {category.subtitle}
                   </p>
                 </div>
@@ -73,7 +73,7 @@ export const SkillsSection: React.FC = () => {
                         {skill.status}
                       </span>
                     </div>
-                    <p className="text-[11px] text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <p className="text-xs text-gray-800 dark:text-gray-200 leading-relaxed font-normal">
                       {skill.description}
                     </p>
                   </div>

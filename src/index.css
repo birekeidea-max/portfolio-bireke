@@ -38,11 +38,10 @@
     line-height: 1.35 !important;
   }
 
-  /* Paragraphes bien ordonnés avec interligne aéré */
+  /* Paragraphes bien ordonnés avec interligne aéré et lisibilité maximale */
   p, li {
     font-size: 12pt !important;
     line-height: 1.6 !important;
-    color: #4B5563;
   }
 
   ::selection {
@@ -62,7 +61,7 @@
 }
 
 .dark p, .dark li {
-  color: #D4D4D8 !important;
+  color: #F4F4F5;
 }
 
 /* Scrollbar chocolat discrète */

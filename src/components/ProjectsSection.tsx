@@ -103,7 +103,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#111827] dark:text-[#F4F4F5]">
               Derniers projets
             </h2>
-            <p className="text-xs text-gray-600 dark:text-gray-400">
+            <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-medium">
               Solutions logicielles et plateformes conçues pour répondre à des défis réels.
             </p>
           </div>
@@ -131,7 +131,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   <span className="text-[11px] font-bold text-[#8B4513] uppercase tracking-wider">
                     {proj.categoryKey === 'ai' ? 'Intelligence Artificielle' : proj.categoryKey === 'mobile' ? 'Application Mobile' : 'Plateforme Web'}
                   </span>
-                  <span className="px-2 py-0.5 rounded-md bg-[#F4F4F5] dark:bg-[#18181B] text-gray-700 dark:text-gray-300 text-[10px] font-semibold border border-gray-200 dark:border-gray-700">
+                  <span className="px-2 py-0.5 rounded-md bg-[#F4F4F5] dark:bg-[#18181B] text-gray-900 dark:text-gray-100 text-[10px] font-semibold border border-gray-200 dark:border-gray-700">
                     {proj.status}
                   </span>
                 </div>
@@ -157,7 +157,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   {proj.name}
                 </h3>
 
-                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
+                <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 leading-relaxed line-clamp-3">
                   {proj.shortDescription}
                 </p>
               </div>
@@ -168,7 +168,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   {proj.technologies.slice(0, 4).map((tech, idx) => (
                     <span
                       key={idx}
-                      className="px-2 py-0.5 rounded-sm bg-[#F4F4F5] dark:bg-[#18181B] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 font-medium"
+                      className="px-2 py-0.5 rounded-sm bg-[#F4F4F5] dark:bg-[#18181B] text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 font-medium"
                     >
                       {tech}
                     </span>
@@ -242,7 +242,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <AlertCircle className="w-3.5 h-3.5" />
                     <span>Problématique résolue</span>
                   </h4>
-                  <p className="text-gray-700 dark:text-gray-300">{selectedProject.problemSolved}</p>
+                  <p className="text-gray-900 dark:text-white font-medium">{selectedProject.problemSolved}</p>
                 </div>
 
                 <div className="p-3 bg-[#F4F4F5] dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-gray-700 space-y-1">
@@ -250,7 +250,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <CheckCircle className="w-3.5 h-3.5" />
                     <span>Solution technique</span>
                   </h4>
-                  <p className="text-gray-700 dark:text-gray-300">{selectedProject.solutionProposed}</p>
+                  <p className="text-gray-900 dark:text-white font-medium">{selectedProject.solutionProposed}</p>
                 </div>
 
                 {selectedProject.features && selectedProject.features.length > 0 && (
@@ -258,7 +258,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <h4 className="font-bold text-[#111827] dark:text-[#F4F4F5] uppercase text-[11px]">
                       Fonctionnalités principales :
                     </h4>
-                    <ul className="space-y-1 text-gray-700 dark:text-gray-300">
+                    <ul className="space-y-1 text-gray-900 dark:text-gray-100">
                       {selectedProject.features.map((feat, idx) => (
                         <li key={idx} className="flex items-start gap-1.5">
                           <span className="text-[#8B4513] font-bold">•</span>
@@ -275,7 +275,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedProject.technologies.map((t, idx) => (
-                      <span key={idx} className="px-2 py-0.5 rounded-sm bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 text-[11px]">
+                      <span key={idx} className="px-2 py-0.5 rounded-sm bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 text-[11px] font-medium">
                         {t}
                       </span>
                     ))}

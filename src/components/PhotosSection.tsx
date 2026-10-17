@@ -102,7 +102,7 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
             <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#111827] dark:text-[#F4F4F5]">
               Photos & Événements UCB
             </h2>
-            <p className="text-xs text-gray-600 dark:text-gray-400">
+            <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-medium">
               Publiez et affichez vos propres photos de projets, concours et ateliers technologiques.
             </p>
           </div>
@@ -114,7 +114,7 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
                 localStorage.removeItem(STORAGE_KEY_PHOTOS);
                 triggerToast('Photos officielles et projets UCB restaurés !');
               }}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 hover:border-[#8B4513] text-gray-700 dark:text-gray-300 text-xs font-bold rounded-lg inline-flex items-center gap-1.5 cursor-pointer uppercase tracking-wider"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 hover:border-[#8B4513] text-gray-800 dark:text-gray-200 text-xs font-bold rounded-lg inline-flex items-center gap-1.5 cursor-pointer uppercase tracking-wider"
               title="Restaurer les photos de projets UCB"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -140,7 +140,7 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
               <h3 className="text-sm font-bold uppercase text-[#111827] dark:text-[#F4F4F5]">
                 Votre galerie de photos est prête
               </h3>
-              <p className="text-xs text-gray-500 max-w-md mx-auto">
+              <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 max-w-md mx-auto">
                 Cliquez ci-dessous pour ajouter vos propres photos d'ateliers, de hackathons ou de réalisations.
               </p>
             </div>
@@ -183,10 +183,10 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
                 <div className="p-3 space-y-1">
                   <div className="flex items-center justify-between text-[11px] text-[#8B4513] font-bold">
                     <span className="uppercase">{item.title}</span>
-                    <span className="text-gray-500 font-normal">{item.date}</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">{item.date}</span>
                   </div>
                   {item.description && (
-                    <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
+                    <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 line-clamp-2">
                       {item.description}
                     </p>
                   )}
@@ -221,10 +221,10 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
                   <h3 className="font-bold uppercase text-[#8B4513] text-sm">
                     {selectedPhoto.title}
                   </h3>
-                  <span className="text-xs text-gray-500">{selectedPhoto.date}</span>
+                  <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">{selectedPhoto.date}</span>
                 </div>
                 {selectedPhoto.description && (
-                  <p className="text-xs text-gray-700 dark:text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-900 dark:text-white leading-relaxed">
                     {selectedPhoto.description}
                   </p>
                 )}
