@@ -136,10 +136,16 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   </span>
                 </div>
 
-                {/* Si l'utilisateur a uploadé sa propre image */}
+                {/* Image du projet avec balises SEO Google */}
                 {proj.image && (
                   <div className="h-36 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                    <img src={proj.image} alt={proj.name} className="w-full h-full object-cover" />
+                    <img
+                      src={proj.image}
+                      alt={`${proj.name} — Bireke Bashige Idea UCB`}
+                      title={proj.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 )}
 
@@ -220,7 +226,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
               {selectedProject.image && (
                 <div className="h-48 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                  <img src={selectedProject.image} alt={selectedProject.name} className="w-full h-full object-cover" />
+                  <img
+                    src={selectedProject.image}
+                    alt={`${selectedProject.name} — Développé par Bireke Bashige Idea`}
+                    title={selectedProject.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               )}
 

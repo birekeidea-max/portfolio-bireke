@@ -149,6 +149,27 @@ Le projet inclut un fichier `.npmrc` configuré (`legacy-peer-deps=true`) pour a
 
 ---
 
+## 🔍 Indexation Google Images & Google Search Console
+
+Pour assurer que vos images apparaissent dans les résultats de recherche **Google Images** :
+
+1. **Images statiques publiques dans `/public/images/` :**
+   - `bireke-idea-profile.jpg` : Photo de profil officielle indexable
+   - `sgesc-systeme-ecoles.jpg`, `amr-mugote-reservation.jpg`, `gemma-kivu-agro.jpg`, `ucb-bukavu-tech.jpg`
+   - *Astuce :* Pour changer définitivement votre photo de profil sur le web, remplacez simplement le fichier `public/images/bireke-idea-profile.jpg` par votre propre photo et poussez sur GitHub/Vercel.
+
+2. **Fichier `sitemap.xml` avec balises `<image:image>` :**
+   - Le fichier `public/sitemap.xml` déclare toutes les images avec leur titre et légende sémantique conformes aux exigences de Google.
+   - Soumettez l'URL `https://votre-domaine.com/sitemap.xml` dans l'onglet **Sitemaps** de votre **Google Search Console**.
+
+3. **Fichier `robots.txt` :**
+   - Autorise explicitement l'agent `Googlebot-Image` à explorer et indexer `/images/` et `/assets/`.
+
+4. **Balises OpenGraph & Schema.org :**
+   - Balises `<meta property="og:image">` et JSON-LD `ImageObject` intégrées pour les aperçus réseaux sociaux et les résultats enrichis Google.
+
+---
+
 ## 📬 Me Contacter
 
 - **WhatsApp :** [+243 999 428 6469](https://wa.me/2439994286469)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, FileText, ArrowRight, Github, Linkedin, Twitter, Mail, MapPin, GraduationCap, Upload, Trash2, Check } from 'lucide-react';
+import { MessageCircle, FileText, ArrowRight, Github, Linkedin, Twitter, Mail, MapPin, GraduationCap, Upload, Trash2, Check, Link as LinkIcon, Globe, X, Info } from 'lucide-react';
 import { PROFILE_DATA } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
 
@@ -16,11 +16,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
 
   const [avatarUrl, setAvatarUrl] = useState<string>(() => {
     try {
-      return localStorage.getItem(STORAGE_KEY_AVATAR) || '';
+      const saved = localStorage.getItem(STORAGE_KEY_AVATAR);
+      return saved || PROFILE_DATA.avatar || '/images/bireke-idea-profile.jpg';
     } catch {
-      return '';
+      return PROFILE_DATA.avatar || '/images/bireke-idea-profile.jpg';
     }
   });
+
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+  const [photoUrlInput, setPhotoUrlInput] = useState('');
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -37,22 +41,43 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
       setAvatarUrl(result);
       try {
         localStorage.setItem(STORAGE_KEY_AVATAR, result);
-        triggerToast('Photo de profil mise à jour avec succès !');
+        triggerToast('Photo de profil mise à jour depuis votre appareil !');
       } catch {
         triggerToast('Photo chargée pour la session.');
       }
+      setIsPhotoModalOpen(false);
     };
     reader.readAsDataURL(file);
   };
 
-  const handleRemoveAvatar = () => {
-    setAvatarUrl('');
+  const handleApplyUrl = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = photoUrlInput.trim();
+    if (!trimmed) {
+      triggerToast('Veuillez entrer une adresse URL valide.');
+      return;
+    }
+    setAvatarUrl(trimmed);
     try {
-      localStorage.removeItem(STORAGE_KEY_AVATAR);
-      triggerToast('Photo supprimée. Vous pouvez insérer votre propre image.');
+      localStorage.setItem(STORAGE_KEY_AVATAR, trimmed);
     } catch {
       // Ignored
     }
+    setIsPhotoModalOpen(false);
+    setPhotoUrlInput('');
+    triggerToast('URL d\'image publique enregistrée (optimale pour Google Images) !');
+  };
+
+  const handleResetToDefault = () => {
+    const defaultUrl = '/images/bireke-idea-profile.jpg';
+    setAvatarUrl(defaultUrl);
+    try {
+      localStorage.removeItem(STORAGE_KEY_AVATAR);
+      triggerToast('Photo réinitialisée avec l\'image publique indexable.');
+    } catch {
+      // Ignored
+    }
+    setIsPhotoModalOpen(false);
   };
 
   const openWhatsApp = () => {
@@ -77,62 +102,138 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
         <div className="flex flex-col items-center justify-center space-y-2">
           <div className="relative group">
             <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full border-4 border-[#8B4513] shadow-md overflow-hidden bg-[#E5E7EB] dark:bg-[#27272A] flex items-center justify-center">
-              {avatarUrl ? (
-                <img
-                  src={avatarUrl}
-                  alt={PROFILE_DATA.name}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center text-[#8B4513] p-2">
-                  <span className="text-3xl font-bold tracking-wider">BI</span>
-                  <span className="text-[10px] text-gray-500 uppercase mt-1">Votre photo</span>
-                </div>
-              )}
+              <img
+                src={avatarUrl || '/images/bireke-idea-profile.jpg'}
+                alt="Photo officielle de BIREKE BASHIGE IDEA — Développeur Informatique Bukavu (UCB)"
+                title="BIREKE BASHIGE IDEA — Développeur Informatique"
+                loading="eager"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Bouton de survol pour changer facilement d'image */}
             <button
-              onClick={() => fileInputRef.current?.click()}
+              onClick={() => setIsPhotoModalOpen(true)}
               className="absolute bottom-1 right-1 p-2 rounded-full bg-[#8B4513] text-white hover:bg-[#70360F] shadow-sm cursor-pointer transition-transform hover:scale-105"
-              title="Insérer ou changer ma photo de profil"
-              aria-label="Insérer ma photo"
+              title="Gérer ou modifier ma photo de profil"
+              aria-label="Gérer ma photo de profil"
             >
               <Upload className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Contrôles utilisateur pour insérer sa propre image */}
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="hidden"
-          />
-
           <div className="flex items-center gap-2 text-xs pt-0.5">
             <button
-              onClick={() => fileInputRef.current?.click()}
+              onClick={() => setIsPhotoModalOpen(true)}
               className="text-[#8B4513] font-bold hover:underline cursor-pointer uppercase flex items-center gap-1"
             >
               <Upload className="w-3 h-3" />
-              <span>{avatarUrl ? 'Changer ma photo' : 'Insérer ma photo personnelle'}</span>
+              <span>Gérer / Changer ma photo</span>
             </button>
-            {avatarUrl && (
-              <>
-                <span className="text-gray-400">·</span>
-                <button
-                  onClick={handleRemoveAvatar}
-                  className="text-gray-500 hover:text-red-600 cursor-pointer flex items-center gap-1"
-                >
-                  <Trash2 className="w-3 h-3" />
-                  <span>Supprimer</span>
-                </button>
-              </>
-            )}
+            <span className="text-gray-400">·</span>
+            <button
+              onClick={handleResetToDefault}
+              className="text-gray-500 hover:text-gray-900 dark:hover:text-white cursor-pointer"
+              title="Réinitialiser avec l'image publique indexable"
+            >
+              Réinitialiser
+            </button>
           </div>
         </div>
+
+        {/* MODALE GESTION PHOTO DE PROFIL (OPTIMISÉE POUR GOOGLE IMAGES & FICHIERS) */}
+        {isPhotoModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-[#27272A] text-[#111827] dark:text-[#F4F4F5] border border-[#D1D5DB] dark:border-[#3F3F46] rounded-xl max-w-lg w-full p-5 space-y-4 shadow-2xl relative text-left">
+              <button
+                onClick={() => setIsPhotoModalOpen(false)}
+                className="absolute top-4 right-4 p-1 rounded-md text-gray-500 hover:text-gray-900 dark:hover:text-white cursor-pointer"
+                aria-label="Fermer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="space-y-1">
+                <h3 className="text-base font-bold uppercase text-[#111827] dark:text-[#F4F4F5] flex items-center gap-2">
+                  <Upload className="w-4 h-4 text-[#8B4513]" />
+                  <span>Photo de profil & Indexation Google</span>
+                </h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
+                  Choisissez la méthode pour afficher votre photo professionnelle sur votre portfolio.
+                </p>
+              </div>
+
+              {/* Note d'explication Google Indexation */}
+              <div className="p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg text-xs space-y-1 text-amber-900 dark:text-amber-200">
+                <div className="font-bold flex items-center gap-1.5 uppercase">
+                  <Info className="w-3.5 h-3.5" />
+                  <span>Comment Google indexe votre photo ?</span>
+                </div>
+                <p className="text-[11px] leading-relaxed">
+                  Pour être indexée dans Google Images, une photo doit posséder une <strong>URL Web publique accessible</strong> (ex: hébergée dans votre projet ou sur GitHub). Les images importées en local depuis le navigateur ne sont visibles que par vous.
+                </p>
+              </div>
+
+              {/* Option A: Upload local */}
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-3 space-y-2">
+                <div className="font-bold text-xs uppercase text-[#8B4513]">
+                  Option 1 : Téléverser un fichier depuis votre appareil
+                </div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="w-full text-xs text-gray-500 file:mr-2 file:py-1.5 file:px-3 file:rounded file:border file:border-gray-300 file:text-xs file:font-bold file:bg-[#8B4513] file:text-white cursor-pointer"
+                />
+              </div>
+
+              {/* Option B: URL Web publique (optimale pour Google Images) */}
+              <form onSubmit={handleApplyUrl} className="border border-gray-200 dark:border-gray-700 rounded-lg p-3 space-y-2">
+                <div className="font-bold text-xs uppercase text-[#8B4513] flex items-center justify-between">
+                  <span>Option 2 : URL d'image publique (Recommandé Google Images)</span>
+                  <Globe className="w-3.5 h-3.5" />
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    type="url"
+                    placeholder="https://raw.githubusercontent.com/... ou lien d'hébergeur"
+                    value={photoUrlInput}
+                    onChange={(e) => setPhotoUrlInput(e.target.value)}
+                    className="flex-1 text-xs border border-gray-300 dark:border-gray-600 rounded px-3 py-1.5 bg-transparent focus:outline-none focus:border-[#8B4513]"
+                  />
+                  <button
+                    type="submit"
+                    className="px-3 py-1.5 bg-[#8B4513] hover:bg-[#70360F] text-white text-xs font-bold uppercase rounded cursor-pointer"
+                  >
+                    Appliquer
+                  </button>
+                </div>
+                <p className="text-[11px] text-gray-500">
+                  Lien direct (JPG, PNG, WebP) accessible publiquement sur internet.
+                </p>
+              </form>
+
+              {/* Option C: Image par défaut du projet */}
+              <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-700 text-xs">
+                <button
+                  type="button"
+                  onClick={handleResetToDefault}
+                  className="text-gray-600 dark:text-gray-400 hover:text-[#8B4513] font-bold uppercase"
+                >
+                  Utiliser l'image publique du projet (/images/bireke-idea-profile.jpg)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsPhotoModalOpen(false)}
+                  className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded font-bold uppercase"
+                >
+                  Fermer
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )}
 
         {/* 2. NOM ET TITRE EN MAJUSCULES */}
         <div className="space-y-1">

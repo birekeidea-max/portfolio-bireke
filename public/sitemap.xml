@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://birekeidea-max.github.io/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+
+    <!-- Image 1: Photo de Profil Officielle de Bireke Bashige Idea -->
+    <image:image>
+      <image:loc>https://birekeidea-max.github.io/images/bireke-idea-profile.jpg</image:loc>
+      <image:title>Bireke Bashige Idea — Développeur Informatique Bukavu</image:title>
+      <image:caption>Photo professionnelle de Bireke Bashige Idea, développeur Web, Mobile Flutter et IA à l'Université Catholique de Bukavu (UCB), RDC.</image:caption>
+    </image:image>
+
+    <!-- Image 2: Projet SGESC RDC -->
+    <image:image>
+      <image:loc>https://birekeidea-max.github.io/images/sgesc-systeme-ecoles.jpg</image:loc>
+      <image:title>SGESC — Système de Gestion des Écoles Secondaires au Congo</image:title>
+      <image:caption>Interface logicielle du Système de Gestion des Écoles Secondaires au Congo par Bireke Idea.</image:caption>
+    </image:image>
+
+    <!-- Image 3: Projet AMR MUGOTE & FILS -->
+    <image:image>
+      <image:loc>https://birekeidea-max.github.io/images/amr-mugote-reservation.jpg</image:loc>
+      <image:title>AMR MUGOTE &amp; FILS — Plateforme de Réservation Maritime Lac Kivu</image:title>
+      <image:caption>Système de billetterie électronique et réservation maritime pour le transport sur le lac Kivu.</image:caption>
+    </image:image>
+
+    <!-- Image 4: Projet Gemma-Kivu Agro -->
+    <image:image>
+      <image:loc>https://birekeidea-max.github.io/images/gemma-kivu-agro.jpg</image:loc>
+      <image:title>Gemma-Kivu Agro — Intelligence Artificielle Agricole</image:title>
+      <image:caption>Solution IA basée sur les modèles ouverts Gemma pour l'assistance aux agriculteurs du Kivu.</image:caption>
+    </image:image>
+
+    <!-- Image 5: Activités Technologiques UCB Bukavu -->
+    <image:image>
+      <image:loc>https://birekeidea-max.github.io/images/ucb-bukavu-tech.jpg</image:loc>
+      <image:title>Écosystème Tech UCB Bukavu — Bireke Bashige Idea</image:title>
+      <image:caption>Activités technologiques, hackathons et projets d'innovation à l'Université Catholique de Bukavu.</image:caption>
+    </image:image>
+  </url>
+</urlset>

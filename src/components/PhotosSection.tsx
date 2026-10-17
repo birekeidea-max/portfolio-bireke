@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Plus, X, Trash2, Calendar, ZoomIn, Upload } from 'lucide-react';
+import { Camera, Plus, X, Trash2, Calendar, ZoomIn, Upload, Globe, Info, RotateCcw } from 'lucide-react';
 import { PhotoItem } from '../types/portfolio';
+import { INITIAL_PHOTOS } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
 
 interface PhotosSectionProps {
@@ -15,9 +16,13 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
   const [photos, setPhotos] = useState<PhotoItem[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY_PHOTOS);
-      return saved ? JSON.parse(saved) : [];
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+      return INITIAL_PHOTOS;
     } catch {
-      return [];
+      return INITIAL_PHOTOS;
     }
   });
 
@@ -102,16 +107,30 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
             </p>
           </div>
 
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="px-4 py-2 bg-[#8B4513] hover:bg-[#70360F] text-white text-xs font-bold rounded-lg shadow-xs inline-flex items-center gap-1.5 cursor-pointer uppercase tracking-wider self-start sm:self-auto"
-          >
-            <Plus className="w-4 h-4" />
-            <span>Ajouter une photo</span>
-          </button>
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            <button
+              onClick={() => {
+                setPhotos(INITIAL_PHOTOS);
+                localStorage.removeItem(STORAGE_KEY_PHOTOS);
+                triggerToast('Photos officielles et projets UCB restaurés !');
+              }}
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 hover:border-[#8B4513] text-gray-700 dark:text-gray-300 text-xs font-bold rounded-lg inline-flex items-center gap-1.5 cursor-pointer uppercase tracking-wider"
+              title="Restaurer les photos de projets UCB"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Restaurer</span>
+            </button>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-4 py-2 bg-[#8B4513] hover:bg-[#70360F] text-white text-xs font-bold rounded-lg shadow-xs inline-flex items-center gap-1.5 cursor-pointer uppercase tracking-wider"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Ajouter une photo</span>
+            </button>
+          </div>
         </div>
 
-        {/* Contenu : Si pas encore de photo */}
+        {/* Contenu : Liste des photos */}
         {photos.length === 0 ? (
           <div className="bg-white dark:bg-[#27272A] border border-dashed border-[#D1D5DB] dark:border-[#3F3F46] rounded-xl p-8 text-center space-y-3">
             <div className="w-12 h-12 rounded-full bg-[#F4F4F5] dark:bg-[#18181B] text-[#8B4513] flex items-center justify-center mx-auto">
@@ -122,7 +141,7 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
                 Votre galerie de photos est prête
               </h3>
               <p className="text-xs text-gray-500 max-w-md mx-auto">
-                Aucune image générée automatiquement par IA n'est insérée. Cliquez sur le bouton ci-dessous pour ajouter vos vraies photos d'ateliers, de hackathons ou de réalisations.
+                Cliquez ci-dessous pour ajouter vos propres photos d'ateliers, de hackathons ou de réalisations.
               </p>
             </div>
             <button
@@ -144,7 +163,9 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
                 <div className="h-44 sm:h-48 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
                   <img
                     src={item.imageUrl}
-                    alt={item.title}
+                    alt={`${item.title} — Bireke Bashige Idea UCB`}
+                    title={item.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
@@ -233,21 +254,48 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
                 </p>
               </div>
 
+              {/* Note d'explication Google Indexation */}
+              <div className="p-2.5 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg text-xs space-y-1 text-amber-900 dark:text-amber-200">
+                <div className="font-bold flex items-center gap-1.5 uppercase text-[11px]">
+                  <Info className="w-3.5 h-3.5" />
+                  <span>Important pour l'indexation Google Images</span>
+                </div>
+                <p className="text-[11px] leading-relaxed">
+                  Pour que Googlebot indexe vos photos dans son moteur, privilégiez une <strong>URL Web publique</strong> (ex: hébergée sur GitHub, Vercel ou Cloudinary) ou déposez vos fichiers dans le dossier <code>public/images/</code>.
+                </p>
+              </div>
+
               <form onSubmit={handleAddPhoto} className="space-y-3 text-xs">
-                <div>
-                  <label className="block font-bold uppercase mb-1 text-gray-700 dark:text-gray-300">
-                    Sélectionner l'image depuis votre appareil *
+                {/* Mode 1: Fichier local */}
+                <div className="p-2.5 border border-gray-200 dark:border-gray-700 rounded-lg space-y-1.5">
+                  <label className="block font-bold uppercase text-[11px] text-gray-700 dark:text-gray-300">
+                    Option A : Téléverser depuis votre appareil
                   </label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleFileUpload}
-                    className="w-full text-xs text-gray-500 file:mr-2 file:py-1.5 file:px-3 file:rounded file:border file:border-gray-300 file:text-xs file:font-bold file:bg-[#8B4513] file:text-white cursor-pointer"
+                    className="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-2.5 file:rounded file:border file:border-gray-300 file:text-xs file:font-bold file:bg-[#8B4513] file:text-white cursor-pointer"
+                  />
+                </div>
+
+                {/* Mode 2: URL Publique */}
+                <div className="p-2.5 border border-gray-200 dark:border-gray-700 rounded-lg space-y-1.5">
+                  <label className="block font-bold uppercase text-[11px] text-gray-700 dark:text-gray-300 flex items-center justify-between">
+                    <span>Option B : Ou saisir une URL publique</span>
+                    <Globe className="w-3 h-3 text-[#8B4513]" />
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="https://... ou /images/mon-image.jpg"
+                    value={newPhoto.imageUrl.startsWith('data:') ? '' : newPhoto.imageUrl}
+                    onChange={(e) => setNewPhoto({ ...newPhoto, imageUrl: e.target.value })}
+                    className="w-full border border-gray-300 dark:border-gray-600 rounded px-2.5 py-1.5 bg-transparent focus:outline-none focus:border-[#8B4513]"
                   />
                 </div>
 
                 {newPhoto.imageUrl && (
-                  <div className="h-32 rounded-lg overflow-hidden border border-gray-300">
+                  <div className="h-32 rounded-lg overflow-hidden border border-gray-300 relative">
                     <img src={newPhoto.imageUrl} alt="Aperçu" className="w-full h-full object-cover" />
                   </div>
                 )}

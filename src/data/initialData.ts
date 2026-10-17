@@ -32,7 +32,7 @@ export const PROFILE_DATA = {
   whatsappRaw: '2439994286469',
   city: 'Bukavu, Sud-Kivu, RD Congo',
   university: 'Université Catholique de Bukavu (UCB)',
-  avatar: '', // Aucune fausse image d'IA : l'utilisateur insère la sienne !
+  avatar: '/images/bireke-idea-profile.jpg', // Image publique crawlable par Googlebot et modifiable à tout moment
   github: 'https://github.com/birekeidea-max',
   linkedin: 'https://www.linkedin.com/in/idea-bireke-bashige-1084a833b?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   x: 'https://x.com/IdeaB19613'
@@ -54,6 +54,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Gestion des rôles et accès sécurisés (Direction, Enseignants, Comptabilité).'
     ],
     technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'Tailwind CSS', 'Mobile Money'],
+    image: '/images/sgesc-systeme-ecoles.jpg',
     demoUrl: 'https://gestion-ecoles.vercel.app/',
     status: 'Plateforme déployée & Opérationnelle',
     note: 'Projet conçu pour répondre aux standards du système éducatif congolais.'
@@ -73,6 +74,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Dashboard d\'administration portuaire pour le pointage et la gestion des passagers.'
     ],
     technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'FlexPay'],
+    image: '/images/amr-mugote-reservation.jpg',
     demoUrl: 'https://amr-mugote.gdgocucbukavu.dev/',
     status: 'Plateforme en ligne & Démo active',
     note: 'Présenté aux initiatives d\'innovation et Demo Day du GDG On Campus UCB.'
@@ -92,6 +94,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Interface allégée optimisée pour les zones à faible connectivité internet.'
     ],
     technologies: ['Intelligence Artificielle', 'Google Gemma', 'Python', 'scikit-learn', 'React'],
+    image: '/images/gemma-kivu-agro.jpg',
     demoUrl: 'https://gemma-kivu-agro-app.vercel.app/',
     status: 'Projet d\'innovation IA & Recherche appliquée'
   },
@@ -263,4 +266,33 @@ export const LANGUAGES_DATA: LanguageItem[] = [
   { name: 'LATIN', level: 'Notions de base' }
 ];
 
-export const INITIAL_PHOTOS: PhotoItem[] = [];
+export const INITIAL_PHOTOS: PhotoItem[] = [
+  {
+    id: 'photo-sgesc',
+    title: 'SGESC — SYSTÈME DE GESTION SCOLAIRE EN RDC',
+    description: 'Interface logicielle de gouvernance scolaire et académique pour les écoles secondaires en RDC conçue par Bireke Idea.',
+    date: 'Octobre 2026',
+    imageUrl: '/images/sgesc-systeme-ecoles.jpg'
+  },
+  {
+    id: 'photo-amr-mugote',
+    title: 'AMR MUGOTE & FILS — BILLETTERIE LAC KIVU',
+    description: 'Plateforme de réservation et billetterie maritime électronique sur le lac Kivu développée par Bireke Idea.',
+    date: 'Septembre 2026',
+    imageUrl: '/images/amr-mugote-reservation.jpg'
+  },
+  {
+    id: 'photo-gemma-agro',
+    title: 'GEMMA-KIVU AGRO — ASSISTANT IA AGRICOLE',
+    description: 'Solution d\'intelligence artificielle d\'assistance agronomique et de diagnostic des cultures au Sud-Kivu.',
+    date: 'Août 2026',
+    imageUrl: '/images/gemma-kivu-agro.jpg'
+  },
+  {
+    id: 'photo-ucb-campus',
+    title: 'UCB BUKAVU — ATELIERS TECH & HACKATHONS',
+    description: 'Sessions d\'innovation, hackathons MLH et incubateur technologique à l\'Université Catholique de Bukavu.',
+    date: '2026',
+    imageUrl: '/images/ucb-bukavu-tech.jpg'
+  }
+];

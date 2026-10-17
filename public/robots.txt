@@ -1,0 +1,14 @@
+# robots.txt - Portfolio Bireke Bashige Idea
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /assets/
+
+# Autoriser explicitement l'indexation de toutes les images par Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /
+Allow: /images/
+Allow: /assets/
+
+# Sitemap avec indexation des images
+Sitemap: https://birekeidea-max.github.io/sitemap.xml
