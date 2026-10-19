@@ -3,6 +3,7 @@ import { Camera, Plus, X, Trash2, Calendar, ZoomIn, Upload, Globe, Info, RotateC
 import { PhotoItem } from '../types/portfolio';
 import { INITIAL_PHOTOS } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 interface PhotosSectionProps {
   triggerToast: (msg: string) => void;
@@ -12,6 +13,7 @@ const STORAGE_KEY_PHOTOS = 'bireke_portfolio_photos_v1';
 
 export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) => {
   const { isDark } = useTheme();
+  const { requireAuth, isAuthenticated } = useAuth();
 
   const [photos, setPhotos] = useState<PhotoItem[]>(() => {
     try {
@@ -84,8 +86,10 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
 
   const handleDeletePhoto = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    setPhotos(prev => prev.filter(p => p.id !== id));
-    triggerToast('Photo supprimée de la galerie.');
+    requireAuth(() => {
+      setPhotos(prev => prev.filter(p => p.id !== id));
+      triggerToast('Photo supprimée de la galerie.');
+    });
   };
 
   return (
@@ -110,19 +114,22 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
           <div className="flex items-center gap-2 self-start sm:self-auto">
             <button
               onClick={() => {
-                setPhotos(INITIAL_PHOTOS);
-                localStorage.removeItem(STORAGE_KEY_PHOTOS);
-                triggerToast('Photos officielles et projets UCB restaurés !');
+                requireAuth(() => {
+                  setPhotos(INITIAL_PHOTOS);
+                  localStorage.removeItem(STORAGE_KEY_PHOTOS);
+                  triggerToast('Photos officielles et projets UCB restaurés !');
+                });
               }}
               className="px-3 py-2 border border-gray-300 dark:border-gray-600 hover:border-[#8B4513] text-gray-800 dark:text-gray-200 text-xs font-bold rounded-lg inline-flex items-center gap-1.5 cursor-pointer uppercase tracking-wider"
-              title="Restaurer les photos de projets UCB"
+              title="Restaurer les photos de projets UCB (Accès propriétaire requis)"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Restaurer</span>
             </button>
             <button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => requireAuth(() => setIsModalOpen(true))}
               className="px-4 py-2 bg-[#8B4513] hover:bg-[#70360F] text-white text-xs font-bold rounded-lg shadow-xs inline-flex items-center gap-1.5 cursor-pointer uppercase tracking-wider"
+              title="Ajouter une photo (Accès propriétaire requis)"
             >
               <Plus className="w-4 h-4" />
               <span>Ajouter une photo</span>
@@ -145,8 +152,9 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
               </p>
             </div>
             <button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => requireAuth(() => setIsModalOpen(true))}
               className="px-4 py-2 bg-[#8B4513] hover:bg-[#70360F] text-white text-xs font-bold rounded-lg uppercase inline-flex items-center gap-1.5 cursor-pointer shadow-xs"
+              title="Insérer des photos (Accès propriétaire requis)"
             >
               <Upload className="w-4 h-4" />
               <span>Insérer mes propres photos</span>

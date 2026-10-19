@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ExternalLink, Plus, X, Layers, AlertCircle, CheckCircle, ArrowUpRight, Upload } from 'lucide-react';
 import { ProjectItem } from '../types/portfolio';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 interface ProjectsSectionProps {
   projects: ProjectItem[];
@@ -15,6 +16,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   triggerToast
 }) => {
   const { isDark } = useTheme();
+  const { requireAuth, isAuthenticated } = useAuth();
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
@@ -109,8 +111,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           </div>
 
           <button
-            onClick={() => setIsAddModalOpen(true)}
+            onClick={() => requireAuth(() => setIsAddModalOpen(true))}
             className="px-4 py-2 bg-[#8B4513] hover:bg-[#70360F] text-white text-xs font-bold rounded-lg shadow-xs inline-flex items-center gap-1.5 cursor-pointer uppercase tracking-wider self-start sm:self-auto"
+            title="Ajouter un nouveau projet (Accès propriétaire requis)"
           >
             <Plus className="w-4 h-4" />
             <span>Ajouter un projet</span>

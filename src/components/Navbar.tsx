@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Menu, X, Sun, Moon, MessageCircle, FileText } from 'lucide-react';
+import { Menu, X, Sun, Moon, MessageCircle, FileText, ShieldCheck, Lock } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 import { PROFILE_DATA } from '../data/initialData';
 
 interface NavbarProps {
@@ -9,6 +10,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
   const { isDark, toggleTheme } = useTheme();
+  const { isAuthenticated, openAuthModal } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollTo = (id: string) => {
@@ -81,6 +83,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
             {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-gray-700" />}
           </button>
 
+          {/* Bouton Contrôle Publications / Propriétaire */}
+          <button
+            onClick={() => openAuthModal()}
+            className={`p-1.5 px-2.5 rounded-lg border cursor-pointer transition-colors inline-flex items-center gap-1.5 text-xs font-bold uppercase ${
+              isAuthenticated
+                ? 'border-green-600 bg-green-50 dark:bg-green-950/40 text-green-700 dark:text-green-300'
+                : 'border-[#D1D5DB] dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-800 dark:text-gray-200 hover:border-[#8B4513]'
+            }`}
+            title={isAuthenticated ? 'Session Propriétaire active (birekeidea@gmail.com)' : 'Connexion Propriétaire (Publication autorisée)'}
+            aria-label="Contrôle des publications"
+          >
+            {isAuthenticated ? <ShieldCheck className="w-4 h-4 text-green-600" /> : <Lock className="w-4 h-4 text-[#8B4513]" />}
+            <span className="hidden sm:inline text-[10px]">
+              {isAuthenticated ? 'Éditeur Actif' : 'Accès Publication'}
+            </span>
+          </button>
+
           {/* Bouton CV */}
           <button
             onClick={onOpenCv}
@@ -141,6 +160,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
           </nav>
 
           <div className="pt-2 border-t border-gray-200 dark:border-gray-700 flex flex-col gap-2">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openAuthModal();
+              }}
+              className={`w-full py-2 border rounded-lg text-center font-bold uppercase inline-flex items-center justify-center gap-1.5 ${
+                isAuthenticated
+                  ? 'border-green-600 bg-green-50 dark:bg-green-950/40 text-green-700 dark:text-green-300'
+                  : 'border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200'
+              }`}
+            >
+              {isAuthenticated ? <ShieldCheck className="w-4 h-4 text-green-600" /> : <Lock className="w-4 h-4 text-[#8B4513]" />}
+              <span>{isAuthenticated ? 'Session Propriétaire Active' : 'Connexion Propriétaire (Publication)'}</span>
+            </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

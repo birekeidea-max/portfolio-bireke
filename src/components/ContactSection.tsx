@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MessageCircle, Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Copy, Check, Edit2, ArrowUp } from 'lucide-react';
 import { PROFILE_DATA } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 interface ContactSectionProps {
   triggerToast: (msg: string) => void;
@@ -11,6 +12,7 @@ const STORAGE_KEY_WHATSAPP = 'bireke_whatsapp_number_v1';
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) => {
   const { isDark } = useTheme();
+  const { requireAuth } = useAuth();
 
   const [whatsappNumber, setWhatsappNumber] = useState<string>(() => {
     try {
@@ -146,10 +148,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ triggerToast }) 
                   <span>Numéro actif : {whatsappNumber}</span>
                   <button
                     onClick={() => {
-                      setTempPhone(whatsappNumber);
-                      setIsEditingPhone(!isEditingPhone);
+                      requireAuth(() => {
+                        setTempPhone(whatsappNumber);
+                        setIsEditingPhone(!isEditingPhone);
+                      });
                     }}
                     className="underline text-white font-semibold cursor-pointer inline-flex items-center gap-1"
+                    title="Modifier le numéro WhatsApp (Accès propriétaire requis)"
                   >
                     <Edit2 className="w-3 h-3" />
                     <span>Modifier le numéro</span>

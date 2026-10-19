@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle2, MessageCircle } from 'lucide-react';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
@@ -16,6 +17,7 @@ import { ExperiencesSection } from './components/ExperiencesSection';
 import { EducationSection } from './components/EducationSection';
 import { ContactSection } from './components/ContactSection';
 import { CvModal } from './components/CvModal';
+import { AuthModal } from './components/AuthModal';
 import { PROJECTS_DATA, PROFILE_DATA } from './data/initialData';
 import { ProjectItem } from './types/portfolio';
 
@@ -103,6 +105,9 @@ const PortfolioContent: React.FC = () => {
         triggerToast={triggerToast}
       />
 
+      {/* Modale d'authentification et contrôle des publications */}
+      <AuthModal triggerToast={triggerToast} />
+
       {/* Bouton Flottant WhatsApp Direct */}
       <button
         onClick={openWhatsAppDirect}
@@ -120,7 +125,9 @@ const PortfolioContent: React.FC = () => {
 export default function App() {
   return (
     <ThemeProvider>
-      <PortfolioContent />
+      <AuthProvider>
+        <PortfolioContent />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

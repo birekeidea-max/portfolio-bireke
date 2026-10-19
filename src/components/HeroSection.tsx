@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, FileText, ArrowRight, Github, Linkedin, Twitter, Mail, MapPin, GraduationCap, Upload, Trash2, Check, Link as LinkIcon, Globe, X, Info } from 'lucide-react';
 import { PROFILE_DATA } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 interface HeroSectionProps {
   onOpenCv: () => void;
@@ -12,6 +13,7 @@ const STORAGE_KEY_AVATAR = 'bireke_custom_avatar_img';
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast }) => {
   const { isDark } = useTheme();
+  const { requireAuth } = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [avatarUrl, setAvatarUrl] = useState<string>(() => {
@@ -113,9 +115,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
 
             {/* Bouton de survol pour changer facilement d'image */}
             <button
-              onClick={() => setIsPhotoModalOpen(true)}
+              onClick={() => requireAuth(() => setIsPhotoModalOpen(true))}
               className="absolute bottom-1 right-1 p-2 rounded-full bg-[#8B4513] text-white hover:bg-[#70360F] shadow-sm cursor-pointer transition-transform hover:scale-105"
-              title="Gérer ou modifier ma photo de profil"
+              title="Gérer ou modifier ma photo de profil (Accès propriétaire requis)"
               aria-label="Gérer ma photo de profil"
             >
               <Upload className="w-4 h-4" />
@@ -124,7 +126,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
 
           <div className="flex items-center gap-2 text-xs pt-0.5">
             <button
-              onClick={() => setIsPhotoModalOpen(true)}
+              onClick={() => requireAuth(() => setIsPhotoModalOpen(true))}
               className="text-[#8B4513] font-bold hover:underline cursor-pointer uppercase flex items-center gap-1"
             >
               <Upload className="w-3 h-3" />
@@ -132,9 +134,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
             </button>
             <span className="text-gray-400">·</span>
             <button
-              onClick={handleResetToDefault}
+              onClick={() => requireAuth(handleResetToDefault)}
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white cursor-pointer"
-              title="Réinitialiser avec l'image publique indexable"
+              title="Réinitialiser avec l'image publique indexable (Accès propriétaire requis)"
             >
               Réinitialiser
             </button>
