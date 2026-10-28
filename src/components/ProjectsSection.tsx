@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { ExternalLink, Plus, X, Layers, AlertCircle, CheckCircle, ArrowUpRight, Upload } from 'lucide-react';
+import { ExternalLink, Plus, X, Layers, AlertCircle, CheckCircle, ArrowUpRight, Upload, Trash2 } from 'lucide-react';
 import { ProjectItem } from '../types/portfolio';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
+import { processAndUploadImage } from '../utils/imageUpload';
 
 interface ProjectsSectionProps {
   projects: ProjectItem[];
@@ -19,6 +20,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   const { requireAuth, isAuthenticated } = useAuth();
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
 
   const [newProject, setNewProject] = useState({
     name: '',
@@ -34,15 +36,23 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
     customImage: ''
   });
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      setNewProject(prev => ({ ...prev, customImage: event.target?.result as string }));
-      triggerToast('Image personnelle chargée.');
-    };
-    reader.readAsDataURL(file);
+    if (!file.type.startsWith('image/')) {
+      triggerToast('Veuillez sélectionner un fichier image valide.');
+      return;
+    }
+    setIsUploadingImage(true);
+    try {
+      const uploadedUrl = await processAndUploadImage(file, 'project');
+      setNewProject(prev => ({ ...prev, customImage: uploadedUrl }));
+      triggerToast('Image du projet téléchargée et prête pour tous les visiteurs !');
+    } catch {
+      triggerToast('Erreur lors du traitement de l\'image.');
+    } finally {
+      setIsUploadingImage(false);
+    }
   };
 
   const handleCreateProject = (e: React.FormEvent) => {
@@ -425,17 +435,40 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   />
                 </div>
 
-                {/* Upload d'image personnelle pour ce projet */}
-                <div>
-                  <label className="block font-bold uppercase mb-1 text-gray-700 dark:text-gray-300">
-                    Votre image / capture (optionnelle)
+                {/* Upload d'image personnelle depuis l'appareil pour ce projet */}
+                <div className="p-3 border border-gray-200 dark:border-gray-700 rounded-lg space-y-2 bg-[#F9FAFB] dark:bg-[#18181B]">
+                  <label className="block font-bold uppercase text-gray-800 dark:text-gray-200 flex items-center gap-1.5">
+                    <Upload className="w-3.5 h-3.5 text-[#8B4513]" />
+                    <span>Image de publication (depuis votre appareil)</span>
                   </label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleImageChange}
-                    className="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border file:border-gray-300 file:text-xs file:font-bold file:bg-gray-100 dark:file:bg-gray-800 dark:file:text-white"
+                    className="w-full text-xs text-gray-700 dark:text-gray-300 file:mr-2 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-bold file:bg-[#8B4513] file:text-white hover:file:bg-[#70360F] cursor-pointer"
                   />
+                  {isUploadingImage && (
+                    <p className="text-[11px] font-bold text-[#8B4513]">
+                      Optimisation et téléchargement automatique de l'image en cours...
+                    </p>
+                  )}
+                  {newProject.customImage && (
+                    <div className="relative h-36 rounded-lg overflow-hidden border border-[#8B4513] mt-2">
+                      <img
+                        src={newProject.customImage}
+                        alt="Aperçu de la publication"
+                        className="w-full h-full object-cover"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setNewProject(prev => ({ ...prev, customImage: '' }))}
+                        className="absolute top-2 right-2 p-1.5 rounded-md bg-black/70 hover:bg-red-600 text-white cursor-pointer"
+                        title="Retirer cette image"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className="pt-2 flex justify-end gap-2 border-t border-gray-200 dark:border-gray-700">

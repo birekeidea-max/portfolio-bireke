@@ -19,7 +19,7 @@ export interface ProjectItem {
 
 export interface SkillItem {
   name: string;
-  status: 'Pratiqué' | 'En cours d\'apprentissage' | 'Exploration active';
+  status: 'Pratiqué' | 'En cours d\'apprentissage' | 'Exploration active' | 'En préparation active';
   description: string;
   iconName?: string;
 }

@@ -3,6 +3,7 @@ import { MessageCircle, FileText, ArrowRight, Github, Linkedin, Twitter, Mail, M
 import { PROFILE_DATA } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
+import { processAndUploadImage, fetchSharedPortfolioState, syncPortfolioState } from '../utils/imageUpload';
 
 interface HeroSectionProps {
   onOpenCv: () => void;
@@ -27,8 +28,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
 
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
   const [photoUrlInput, setPhotoUrlInput] = useState('');
+  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    let active = true;
+    fetchSharedPortfolioState().then((shared) => {
+      if (!active || !shared) return;
+      if (shared.avatarUrl && typeof shared.avatarUrl === 'string') {
+        setAvatarUrl(shared.avatarUrl);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -37,19 +52,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const result = event.target?.result as string;
-      setAvatarUrl(result);
+    setIsUploadingAvatar(true);
+    try {
+      const uploadedUrl = await processAndUploadImage(file, 'avatar');
+      setAvatarUrl(uploadedUrl);
+      syncPortfolioState({ avatarUrl: uploadedUrl });
       try {
-        localStorage.setItem(STORAGE_KEY_AVATAR, result);
-        triggerToast('Photo de profil mise à jour depuis votre appareil !');
+        localStorage.setItem(STORAGE_KEY_AVATAR, uploadedUrl);
       } catch {
-        triggerToast('Photo chargée pour la session.');
+        // Ignored
       }
+      triggerToast('Photo de profil téléchargée et visible pour tous les visiteurs !');
       setIsPhotoModalOpen(false);
-    };
-    reader.readAsDataURL(file);
+    } catch {
+      triggerToast('Erreur lors du traitement de la photo.');
+    } finally {
+      setIsUploadingAvatar(false);
+    }
   };
 
   const handleApplyUrl = (e: React.FormEvent) => {
@@ -60,6 +79,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
       return;
     }
     setAvatarUrl(trimmed);
+    syncPortfolioState({ avatarUrl: trimmed });
     try {
       localStorage.setItem(STORAGE_KEY_AVATAR, trimmed);
     } catch {
@@ -73,6 +93,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
   const handleResetToDefault = () => {
     const defaultUrl = '/images/bireke-idea-profile.jpg';
     setAvatarUrl(defaultUrl);
+    syncPortfolioState({ avatarUrl: defaultUrl });
     try {
       localStorage.removeItem(STORAGE_KEY_AVATAR);
       triggerToast('Photo réinitialisée avec l\'image publique indexable.');

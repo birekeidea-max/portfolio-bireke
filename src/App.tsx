@@ -20,6 +20,7 @@ import { CvModal } from './components/CvModal';
 import { AuthModal } from './components/AuthModal';
 import { PROJECTS_DATA, PROFILE_DATA } from './data/initialData';
 import { ProjectItem } from './types/portfolio';
+import { fetchSharedPortfolioState, syncPortfolioState } from './utils/imageUpload';
 
 const STORAGE_KEY_PROJECTS = 'bireke_idea_portfolio_projects_clean_v5';
 
@@ -44,6 +45,18 @@ const PortfolioContent: React.FC = () => {
   };
 
   useEffect(() => {
+    let mounted = true;
+    fetchSharedPortfolioState().then((shared) => {
+      if (mounted && shared?.projects && Array.isArray(shared.projects) && shared.projects.length > 0) {
+        setProjects(shared.projects);
+      }
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY_PROJECTS, JSON.stringify(projects));
     } catch (e) {
@@ -52,7 +65,11 @@ const PortfolioContent: React.FC = () => {
   }, [projects]);
 
   const handleAddProject = (newProject: ProjectItem) => {
-    setProjects(prev => [newProject, ...prev]);
+    setProjects(prev => {
+      const updated = [newProject, ...prev];
+      syncPortfolioState({ projects: updated });
+      return updated;
+    });
   };
 
   const openWhatsAppDirect = () => {

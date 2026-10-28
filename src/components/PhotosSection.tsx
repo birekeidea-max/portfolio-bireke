@@ -4,6 +4,7 @@ import { PhotoItem } from '../types/portfolio';
 import { INITIAL_PHOTOS } from '../data/initialData';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
+import { processAndUploadImage, fetchSharedPortfolioState, syncPortfolioState } from '../utils/imageUpload';
 
 interface PhotosSectionProps {
   triggerToast: (msg: string) => void;
@@ -30,6 +31,7 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
 
   const [newPhoto, setNewPhoto] = useState({
     title: '',
@@ -37,6 +39,20 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
     date: new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' }),
     imageUrl: ''
   });
+
+  // Chargement automatique des photos publiées pour tous les visiteurs
+  useEffect(() => {
+    let active = true;
+    fetchSharedPortfolioState().then((shared) => {
+      if (!active || !shared) return;
+      if (Array.isArray(shared.photos) && shared.photos.length > 0) {
+        setPhotos(shared.photos);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     try {
@@ -46,16 +62,24 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
     }
   }, [photos]);
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      triggerToast('Veuillez sélectionner un fichier image valide.');
+      return;
+    }
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      setNewPhoto(prev => ({ ...prev, imageUrl: event.target?.result as string }));
-      triggerToast('Photo importée depuis votre appareil.');
-    };
-    reader.readAsDataURL(file);
+    setIsUploadingImage(true);
+    try {
+      const uploadedUrl = await processAndUploadImage(file, 'photo');
+      setNewPhoto(prev => ({ ...prev, imageUrl: uploadedUrl }));
+      triggerToast('Photo téléchargée depuis votre appareil et optimisée pour tous les visiteurs.');
+    } catch {
+      triggerToast('Erreur lors du traitement de l\'image.');
+    } finally {
+      setIsUploadingImage(false);
+    }
   };
 
   const handleAddPhoto = (e: React.FormEvent) => {
@@ -73,7 +97,11 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
       imageUrl: newPhoto.imageUrl
     };
 
-    setPhotos(prev => [item, ...prev]);
+    setPhotos(prev => {
+      const updated = [item, ...prev];
+      syncPortfolioState({ photos: updated });
+      return updated;
+    });
     setIsModalOpen(false);
     setNewPhoto({
       title: '',
@@ -81,13 +109,17 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
       date: new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' }),
       imageUrl: ''
     });
-    triggerToast('Photo ajoutée à votre galerie !');
+    triggerToast('Photo publiée et visible par tous les visiteurs !');
   };
 
   const handleDeletePhoto = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     requireAuth(() => {
-      setPhotos(prev => prev.filter(p => p.id !== id));
+      setPhotos(prev => {
+        const updated = prev.filter(p => p.id !== id);
+        syncPortfolioState({ photos: updated });
+        return updated;
+      });
       triggerToast('Photo supprimée de la galerie.');
     });
   };
@@ -116,6 +148,7 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
               onClick={() => {
                 requireAuth(() => {
                   setPhotos(INITIAL_PHOTOS);
+                  syncPortfolioState({ photos: INITIAL_PHOTOS });
                   localStorage.removeItem(STORAGE_KEY_PHOTOS);
                   triggerToast('Photos officielles et projets UCB restaurés !');
                 });
@@ -274,7 +307,7 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
               </div>
 
               <form onSubmit={handleAddPhoto} className="space-y-3 text-xs">
-                {/* Mode 1: Fichier local */}
+                {/* Mode 1: Fichier local depuis l'appareil */}
                 <div className="p-2.5 border border-gray-200 dark:border-gray-700 rounded-lg space-y-1.5">
                   <label className="block font-bold uppercase text-[11px] text-gray-700 dark:text-gray-300">
                     Option A : Téléverser depuis votre appareil
@@ -285,6 +318,11 @@ export const PhotosSection: React.FC<PhotosSectionProps> = ({ triggerToast }) =>
                     onChange={handleFileUpload}
                     className="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-2.5 file:rounded file:border file:border-gray-300 file:text-xs file:font-bold file:bg-[#8B4513] file:text-white cursor-pointer"
                   />
+                  {isUploadingImage && (
+                    <p className="text-[11px] font-bold text-[#8B4513]">
+                      Optimisation et enregistrement automatique de l'image...
+                    </p>
+                  )}
                 </div>
 
                 {/* Mode 2: URL Publique */}
