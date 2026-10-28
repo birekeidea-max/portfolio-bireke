@@ -2,12 +2,14 @@
 User-agent: *
 Allow: /
 Allow: /images/
+Allow: /uploads/
 Allow: /assets/
 
 # Autoriser explicitement l'indexation de toutes les images par Googlebot-Image
 User-agent: Googlebot-Image
 Allow: /
 Allow: /images/
+Allow: /uploads/
 Allow: /assets/
 
 # Sitemap avec indexation des images

@@ -9,23 +9,24 @@ import {
 
 export const PROFILE_DATA = {
   name: 'BIREKE BASHIGE IDEA',
-  title: 'DÉVELOPPEUR INFORMATIQUE | CISCO CCNA & RÉSEAUX | WEB, MOBILE & IA',
-  catchphrase: 'Je conçois des architectures logicielles robustes, des solutions d\'IA adaptées au contexte africain et des infrastructures réseaux sécurisées.',
-  shortBio: 'Développeur Informatique passionné, je continue d\'élargir mes compétences techniques. En complément de mes projets de développement web et logiciel, je suis actuellement en préparation active de la certification Cisco CCNA (Cisco Certified Network Associate). Cette étape clé, sur le point d\'être finalisée, renforce mes connaissances en réseaux et infrastructures informatiques pour me propulser vers un profil complet d\'expert IT.',
+  title: 'DÉVELOPPEUR FULL-STACK | ADMINISTRATION RÉSEAU & CISCO CCNA | EXPERT IT POLYVALENT',
+  catchphrase: 'Maîtriser l\'ensemble de la chaîne informatique — du développement logiciel Full-Stack et de l\'IA à l\'administration des infrastructures et des réseaux.',
+  shortBio: 'En plus de mes compétences de Développeur Full-Stack, j\'ai franchi une étape décisive dans mon parcours technologique en me spécialisant dans l\'administration réseau. Je finalise actuellement ma préparation pour l\'obtention de la certification Cisco CCNA (Cisco Certified Network Associate). Cette transition stratégique me permet de maîtriser l\'ensemble de la chaîne informatique — du développement logiciel à la gestion des infrastructures et des réseaux — afin de m\'affirmer en tant qu\'Expert IT polyvalent.',
   aboutMeParagraphs: [
+    'En plus de mes compétences de Développeur Full-Stack, j\'ai franchi une étape décisive dans mon parcours technologique en me spécialisant dans l\'administration réseau. Je finalise actuellement ma préparation pour l\'obtention de la certification Cisco CCNA (Cisco Certified Network Associate). Cette transition stratégique me permet de maîtriser l\'ensemble de la chaîne informatique — du développement logiciel à la gestion des infrastructures et des réseaux — afin de m\'affirmer en tant qu\'Expert IT polyvalent.',
     'Développeur Informatique passionné, je continue d\'élargir mes compétences techniques. En complément de mes projets de développement web et logiciel, je suis actuellement en préparation active de la certification Cisco CCNA (Cisco Certified Network Associate). Cette étape clé, sur le point d\'être finalisée, renforce mes connaissances en réseaux et infrastructures informatiques pour me propulser vers un profil complet d\'expert IT.',
-    'Bireke Bashige Idea est un développeur informatique basé à Bukavu (Sud-Kivu, République Démocratique du Congo), actuellement en formation en Systèmes Informatiques au sein de la prestigieuse Université Catholique de Bukavu (UCB). Acteur engagé de l\'écosystème technologique des Grands Lacs, il combine une solide assise en génie logiciel avec une spécialisation pointue en architectures logicielles modernes, Cloud Computing et réseaux de télécommunications.',
+    'Bireke Bashige Idea est un développeur informatique basé à Bukavu (Sud-Kivu, République Démocratique du Congo), actuellement en formation en Systèmes Informatiques au sein de la prestigieuse Université Catholique de Bukavu (UCB). Acteur engagé de l\'écosystème technologique des Grands Lacs, il combine une solide assise en génie logiciel avec une spécialisation pointue en architectures logicielles modernes, Cloud Computing, administration réseau et télécommunications.',
     'Sur le plan applicatif et algorithmique, Bireke Bashige Idea conçoit et déploie des solutions numériques à fort impact socio-économique. Son expertise technique englobe le développement Web & Mobile Full-Stack (React, TypeScript, Node.js, Flutter), l\'Intelligence Artificielle appliquée (intégration des modèles Google Gemini API, expérimentations des modèles ouverts Gemma, apprentissage automatique avec scikit-learn) et l\'intégration de solutions de paiement Mobile Money africaines telles que FlexPay et CinetPay (M-Pesa, Airtel Money, Orange Money).',
     'Reconnu pour sa participation active aux initiatives d\'innovation de pointe, Bireke Bashige Idea s\'est illustré au sein de l\'AI4EAC Innovation Challenge, des hackathons internationaux Major League Hacking (MLH) sur Devpost et des activités d\'incubation du Google Developer Groups (GDG) On Campus UCB. Ses réalisations phares incluent SGESC (Système de Gestion des Écoles Secondaires au Congo), la plateforme maritime AMR MUGOTE, l\'assistant agronomique Gemma Kivu Agro, le système de Diagnostic de Plats Congolais par IA et la solution CampusTel.'
   ],
   interests: [
-    'Préparation active de la certification Cisco CCNA (Réseaux & Infrastructures IT)',
-    'Développement Web & Mobile Full-Stack (React, TypeScript, Flutter)',
+    'Spécialisation en Administration Réseau & Certification Cisco CCNA (Expert IT polyvalent)',
+    'Gestion des infrastructures et des réseaux (Routage, Commutation, TCP/IP, VLANs, Sécurité)',
+    'Développement Web & Mobile Full-Stack (React, TypeScript, Node.js, Flutter)',
     'Intelligence Artificielle appliquée (Google Gemini API, modèles Gemma)',
     'Machine Learning & Data Science (scikit-learn, classification, vision)',
     'Intégration de passerelles Mobile Money (FlexPay, CinetPay, M-Pesa, Airtel)',
     'Architectures Cloud Computing & Déploiement distribué',
-    'Systèmes Informatiques, Réseaux et Télécommunications',
     'Participation aux hackathons internationaux (MLH Devpost, AI4EAC, GDG UCB)'
   ],
   email: 'birekeidea@gmail.com',
@@ -187,12 +188,12 @@ export const SKILL_CATEGORIES_DATA: SkillCategoryGroup[] = [
     ]
   },
   {
-    title: 'RÉSEAUX, INFRASTRUCTURES IT & CISCO CCNA',
-    subtitle: 'Certification Cisco CCNA en préparation active & réseaux informatiques',
+    title: 'ADMINISTRATION RÉSEAU, INFRASTRUCTURES IT & CISCO CCNA',
+    subtitle: 'Maîtrise de la chaîne informatique : gestion des infrastructures, réseaux et certification Cisco CCNA',
     skills: [
-      { name: 'Cisco CCNA (Cisco Certified Network Associate)', status: 'En préparation active', description: 'Étape clé sur le point d\'être finalisée : routage, commutation, adressage IPv4/IPv6, VLANs et sécurité des infrastructures IT' },
-      { name: 'Réseaux informatiques & Infrastructures', status: 'Pratiqué', description: 'Étude approfondie des protocoles TCP/IP, topologies réseaux, administration et diagnostic réseau' },
-      { name: 'Télécommunications & VoIP', status: 'En cours d\'apprentissage', description: 'Infrastructures de communication, transmission IP et technologies CampusTel' }
+      { name: 'Cisco CCNA (Cisco Certified Network Associate)', status: 'En préparation active', description: 'Finalisation de la certification Cisco CCNA : routage, commutation, adressage IPv4/IPv6, VLANs et sécurité des infrastructures IT' },
+      { name: 'Administration Réseau & Gestion des Infrastructures', status: 'Pratiqué', description: 'Spécialisation stratégique en administration réseau, supervision des équipements, protocoles TCP/IP et architectures d\'entreprise' },
+      { name: 'Télécommunications & VoIP (CampusTel)', status: 'Pratiqué', description: 'Infrastructures de communication interconnectées, transmission IP et services réseaux universitaires' }
     ]
   }
 ];
@@ -254,10 +255,10 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
 
 export const EDUCATION_DATA: EducationItem = {
   institution: 'UNIVERSITÉ CATHOLIQUE DE BUKAVU (UCB)',
-  degree: 'Systèmes Informatiques',
-  status: 'Étudiant en cours de formation',
-  description: 'Formation universitaire d\'excellence axée sur l\'ingénierie des systèmes informatiques, l\'algorithmique, le génie logiciel, le Cloud, les réseaux et les bases de données.',
-  complementary: 'En préparation active de la certification Cisco CCNA (Cisco Certified Network Associate) sur le point d\'être finalisée, renforçant mes connaissances en réseaux et infrastructures informatiques vers un profil complet d\'expert IT.'
+  degree: 'Systèmes Informatiques (Développement Full-Stack & Administration Réseau)',
+  status: 'Étudiant en cours de formation & Spécialisation Cisco CCNA',
+  description: 'Formation universitaire d\'excellence axée sur l\'ingénierie des systèmes informatiques, l\'algorithmique, le génie logiciel, le Cloud, l\'administration des réseaux et les bases de données.',
+  complementary: 'En plus de mes compétences de Développeur Full-Stack, j\'ai franchi une étape décisive dans mon parcours technologique en me spécialisant dans l\'administration réseau. Je finalise actuellement ma préparation pour l\'obtention de la certification Cisco CCNA (Cisco Certified Network Associate). Cette transition stratégique me permet de maîtriser l\'ensemble de la chaîne informatique — du développement logiciel à la gestion des infrastructures et des réseaux — afin de m\'affirmer en tant qu\'Expert IT polyvalent.'
 };
 
 export const LANGUAGES_DATA: LanguageItem[] = [

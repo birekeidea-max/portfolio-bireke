@@ -258,35 +258,46 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCv, triggerToast
           </div>
         )}
 
-        {/* 2. NOM ET TITRE EN MAJUSCULES */}
-        <div className="space-y-1">
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-wide text-[#111827] dark:text-[#F4F4F5]">
+        {/* 2. NOM ET TITRE EN MAJUSCULES (AVEC MICRODATA SCHEMA.ORG POUR GOOGLE) */}
+        <div className="space-y-1.5" itemScope itemType="https://schema.org/Person">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#FBF4EE] dark:bg-[#27272A] border border-[#8B4513] text-[#8B4513] text-[11px] font-bold uppercase tracking-wider">
+            <span>Développeur Full-Stack · Administration Réseau · Cisco CCNA · Expert IT Polyvalent</span>
+          </div>
+          <h1 itemProp="name" className="text-2xl sm:text-3xl font-extrabold tracking-wide text-[#111827] dark:text-[#F4F4F5]">
             {PROFILE_DATA.name}
           </h1>
-          <p className="text-xs sm:text-sm font-bold text-[#8B4513] uppercase tracking-wide">
+          <p itemProp="jobTitle" className="text-xs sm:text-sm font-bold text-[#8B4513] uppercase tracking-wide">
             {PROFILE_DATA.title}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-gray-800 dark:text-gray-200 font-medium pt-1">
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1" itemProp="affiliation">
               <GraduationCap className="w-3.5 h-3.5 text-[#8B4513]" />
               <span>Université Catholique de Bukavu (UCB)</span>
             </span>
             <span className="text-[#8B4513] font-bold">·</span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex items-center gap-1" itemProp="address">
               <MapPin className="w-3.5 h-3.5 text-[#8B4513]" />
               <span>Bukavu, Sud-Kivu, RD Congo</span>
             </span>
           </div>
-        </div>
 
-        {/* 3. DESCRIPTIF DU PROFIL */}
-        <div className="max-w-2xl mx-auto bg-white dark:bg-[#27272A] p-4 rounded-xl border border-[#D1D5DB] dark:border-[#3F3F46] text-left space-y-2 shadow-xs">
-          <p className="text-xs sm:text-sm text-gray-900 dark:text-white font-bold leading-relaxed">
-            « {PROFILE_DATA.catchphrase} »
-          </p>
-          <p className="text-xs sm:text-sm text-gray-900 dark:text-gray-100 leading-relaxed font-normal">
-            {PROFILE_DATA.shortBio}
-          </p>
+          {/* 3. DESCRIPTIF PUBLIC INDEXÉ DU PROFIL */}
+          <div className="max-w-3xl mx-auto mt-3 bg-white dark:bg-[#27272A] p-4 sm:p-5 rounded-xl border-2 border-[#8B4513] text-left space-y-2.5 shadow-sm">
+            <div className="flex items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-700 pb-1.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#8B4513]">
+                Déclaration Officielle de Spécialisation — Expert IT Polyvalent
+              </span>
+              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-[#8B4513] text-white">
+                Cisco CCNA &amp; Full-Stack
+              </span>
+            </div>
+            <p itemProp="description" className="text-xs sm:text-sm text-gray-900 dark:text-white leading-relaxed font-medium">
+              {PROFILE_DATA.shortBio}
+            </p>
+            <p className="text-xs text-gray-800 dark:text-gray-200 font-bold leading-relaxed pt-1 border-t border-gray-100 dark:border-gray-800">
+              « {PROFILE_DATA.catchphrase} »
+            </p>
+          </div>
         </div>
 
         {/* 4. BOUTONS D'ACTION (WHATSAPP EN DIRECT, CV, PROJETS) */}

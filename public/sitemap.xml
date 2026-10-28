@@ -3,15 +3,15 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://birekeidea-max.github.io/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
 
     <!-- Image 1: Photo de Profil Officielle de Bireke Bashige Idea -->
     <image:image>
       <image:loc>https://birekeidea-max.github.io/images/bireke-idea-profile.jpg</image:loc>
-      <image:title>Bireke Bashige Idea — Développeur Informatique Bukavu</image:title>
-      <image:caption>Photo professionnelle de Bireke Bashige Idea, développeur Web, Mobile Flutter et IA à l'Université Catholique de Bukavu (UCB), RDC.</image:caption>
+      <image:title>Bireke Bashige Idea — Développeur Full-Stack, Administration Réseau, Cisco CCNA &amp; Expert IT Polyvalent</image:title>
+      <image:caption>En plus de ses compétences de Développeur Full-Stack, Bireke Bashige Idea se spécialise dans l'administration réseau et finalise la certification Cisco CCNA (Cisco Certified Network Associate) pour maîtriser l'ensemble de la chaîne informatique en tant qu'Expert IT polyvalent à Bukavu (UCB).</image:caption>
     </image:image>
 
     <!-- Image 2: Projet SGESC RDC -->

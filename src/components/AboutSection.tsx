@@ -11,13 +11,13 @@ export const AboutSection: React.FC = () => {
         <div className="border-b border-[#D1D5DB] dark:border-[#3F3F46] pb-3 space-y-1">
           <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase text-[#8B4513] tracking-wider">
             <User className="w-3.5 h-3.5" />
-            <span>Présentation & Expertise IT</span>
+            <span>Présentation & Expertise IT Polyvalente</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wide text-[#111827] dark:text-[#F4F4F5]">
-            À propos de Bireke Idea — Développeur Informatique & Cisco CCNA
+            À propos de Bireke Idea — Développeur Full-Stack, Administration Réseau & Cisco CCNA
           </h2>
           <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 font-medium">
-            Développement Web & Logiciel, Intelligence Artificielle, Réseaux et Infrastructures Informatiques.
+            Maîtrise complète de la chaîne informatique : Développement Logiciel Full-Stack, Intelligence Artificielle, Administration Réseau et Infrastructures IT.
           </p>
         </div>
 
@@ -27,28 +27,37 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-7 bg-white dark:bg-[#27272A] border border-[#D1D5DB] dark:border-[#3F3F46] rounded-xl p-5 space-y-4 shadow-xs">
             <h3 className="text-base font-bold uppercase text-[#111827] dark:text-[#F4F4F5] flex items-center gap-2">
               <Target className="w-4 h-4 text-[#8B4513]" />
-              <span>Parcours, Vision Logicielle & Réseaux</span>
+              <span>Parcours, Vision Logicielle & Administration Réseau</span>
             </h3>
 
-            {/* Encadré Phare : Cisco CCNA & Réseaux */}
-            <div className="p-3.5 rounded-lg bg-[#FBF4EE] dark:bg-[#18181B] border-l-4 border-[#8B4513] space-y-1.5">
-              <div className="flex items-center justify-between gap-2">
+            {/* Encadré Phare : Administration Réseau, Cisco CCNA & Expert IT Polyvalent */}
+            <article
+              itemScope
+              itemType="https://schema.org/Person"
+              className="p-4 rounded-lg bg-[#FBF4EE] dark:bg-[#18181B] border-l-4 border-[#8B4513] space-y-2.5"
+            >
+              <meta itemProp="name" content="Bireke Bashige Idea" />
+              <meta itemProp="jobTitle" content="Développeur Full-Stack, Administration Réseau (Cisco CCNA) & Expert IT Polyvalent" />
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-1.5 text-xs font-bold uppercase text-[#8B4513]">
                   <Network className="w-4 h-4" />
-                  <span>Focus Actuel : Certification Cisco CCNA & Réseaux</span>
+                  <span>Spécialisation Administration Réseau &amp; Cisco CCNA</span>
                 </div>
                 <span className="px-2 py-0.5 rounded bg-[#8B4513] text-white text-[10px] font-bold uppercase inline-flex items-center gap-1">
                   <Award className="w-3 h-3" />
-                  <span>Finalisation en cours</span>
+                  <span>Expert IT Polyvalent</span>
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-gray-900 dark:text-white leading-relaxed font-medium">
+              <p itemProp="description" className="text-xs sm:text-sm text-gray-900 dark:text-white leading-relaxed font-bold">
                 {PROFILE_DATA.aboutMeParagraphs[0]}
               </p>
-            </div>
+              <p className="text-xs sm:text-sm text-gray-900 dark:text-gray-100 leading-relaxed font-medium border-t border-[#8B4513]/20 pt-2">
+                {PROFILE_DATA.aboutMeParagraphs[1]}
+              </p>
+            </article>
 
             <div className="space-y-3 text-xs sm:text-sm text-gray-900 dark:text-white leading-relaxed">
-              {PROFILE_DATA.aboutMeParagraphs.slice(1).map((par, idx) => (
+              {PROFILE_DATA.aboutMeParagraphs.slice(2).map((par, idx) => (
                 <p key={idx} className="text-gray-900 dark:text-white leading-relaxed">{par}</p>
               ))}
             </div>
@@ -57,10 +66,10 @@ export const AboutSection: React.FC = () => {
             <div className="p-3.5 rounded-lg bg-[#F4F4F5] dark:bg-[#18181B] border border-gray-200 dark:border-gray-700 space-y-1">
               <div className="flex items-center gap-1.5 text-xs font-bold uppercase text-[#8B4513]">
                 <Compass className="w-3.5 h-3.5" />
-                <span>Mon approche</span>
+                <span>Mon approche d'Expert IT Polyvalent</span>
               </div>
               <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
-                Apprendre avec rigueur, concevoir des solutions modulaires et stables, et maîtriser de bout en bout le génie logiciel ainsi que les infrastructures réseaux à Bukavu et dans la région.
+                Maîtriser l'ensemble de la chaîne informatique — du développement logiciel Full-Stack et de l'Intelligence Artificielle à la gestion des infrastructures et de l'administration réseau (Cisco CCNA) — pour bâtir des systèmes fiables, sécurisés et durables.
               </p>
             </div>
           </div>
